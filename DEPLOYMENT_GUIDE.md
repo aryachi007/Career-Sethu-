@@ -21,7 +21,7 @@
 |-------|--------|
 | Uses `VITE_API_URL` env variable | ✅ |
 | No hardcoded localhost URLs | ✅ |
-| `vercel.json` with SPA rewrites | ✅ |
+| `firebase.json` with SPA rewrites | ✅ |
 | `.env.example` created | ✅ |
 | `.gitignore` excludes `.env` and `dist/` | ✅ |
 
@@ -38,7 +38,7 @@
 | `PORT` | ❌ Auto | Set automatically by Render |
 | `NODE_ENV` | ❌ Optional | `production` |
 
-### Frontend (Vercel)
+### Frontend (Firebase)
 | Variable | Required | Example |
 |----------|----------|---------|
 | `VITE_API_URL` | ✅ Yes | `https://career-sethu-backend.onrender.com` |
@@ -109,61 +109,62 @@ Expected: `{ "status": "ok" }`
 
 ---
 
-## Phase B — Deploy Frontend to Vercel
+## Phase B — Deploy Frontend to Firebase Hosting
 
-### Step 1: Create Vercel Account & Project
-1. Go to **https://vercel.com** and sign up (or log in) with GitHub.
-2. Click **"Add New..."** → **"Project"**.
-3. Import the repository: **`aryachi007/Career-Sethu-`**.
+### Step 1: Install Firebase CLI
+Make sure you have the Firebase CLI installed:
+```bash
+npm install -g firebase-tools
+```
 
-### Step 2: Configure the Project
-Vercel will auto-detect the Vite framework. Set:
+### Step 2: Log in to Firebase CLI
+Log in using the Google account associated with your Firebase project:
+```bash
+firebase login
+```
 
-| Setting | Value |
-|---------|-------|
-| **Project Name** | `career-sethu` |
-| **Framework Preset** | Vite |
-| **Root Directory** | `frontend` *(click "Edit" to change this)* |
-| **Build Command** | `npm run build` |
-| **Output Directory** | `dist` |
-| **Install Command** | `npm install` |
+### Step 3: Configure Environment File
+Create or update `frontend/.env.production` in the frontend root:
+```env
+VITE_API_URL=https://career-sethu-backend.onrender.com
+```
+*(Make sure to replace `https://career-sethu-backend.onrender.com` with the actual URL from your Render backend deployment)*
 
-### Step 3: Set Environment Variable
-Under **"Environment Variables"**, add:
+### Step 4: Build the Frontend
+Navigate to the `frontend` folder and run the build command. Vite will automatically load `.env.production` and compile your assets into `frontend/dist`:
+```bash
+cd frontend
+npm run build
+cd ..
+```
 
-| Key | Value |
-|-----|-------|
-| `VITE_API_URL` | `https://career-sethu-backend.onrender.com` |
-
-*(Use the exact Render URL you got from Phase A, Step 5)*
-
-### Step 4: Deploy
-1. Click **"Deploy"**.
-2. Wait 1-2 minutes for the build.
-3. You will get a URL like: `https://career-sethu.vercel.app`
-
-### Step 5: Verify Frontend
-Visit your Vercel URL. The Career-Sethu onboarding page should load.
+### Step 5: Deploy to Firebase Hosting
+Run the deployment command from the project root:
+```bash
+firebase deploy
+```
+Firebase Hosting will build and deploy the React application. Once completed, it will output your Hosting URL:
+`https://careersethu-682fa.web.app`
 
 ---
 
 ## Phase C — Connect Frontend ↔ Backend
 
 ### Step 1: Update Render CORS
-Now that you have the Vercel URL:
+Now that your Firebase Hosting site is deployed:
 
-1. Go to **Render Dashboard** → your backend service.
-2. Click **"Environment"** tab.
-3. Update the `FRONTEND_URL` variable:
-   - Set it to your Vercel URL, e.g., `https://career-sethu.vercel.app`
-4. Click **"Save Changes"**.
-5. Render will automatically redeploy with the new CORS setting.
+1. Go to your **Render Dashboard** and select your backend Web Service.
+2. Click on the **Environment** tab.
+3. Update the `FRONTEND_URL` environment variable:
+   - Set it to your Firebase Hosting URL: `https://careersethu-682fa.web.app`
+4. Click **Save Changes**.
+5. Render will automatically trigger a new deployment to apply the updated CORS settings.
 
 ### Step 2: Verify Full Connectivity
-1. Open your Vercel URL in a browser.
+1. Visit your live Firebase Hosting URL (`https://careersethu-682fa.web.app`).
 2. Open **Developer Tools → Console** (F12).
-3. Complete the onboarding form and submit.
-4. If you see no CORS errors and the dashboard loads with data → **deployment is successful!**
+3. Complete the onboarding questionnaire and submit.
+4. Verify that the form submits successfully, no CORS errors appear in the console, and your Career intelligence dashboard renders all cards using data fetched from the Render backend.
 
 ---
 
@@ -186,11 +187,11 @@ Test each feature on the live deployment:
 ## Troubleshooting
 
 ### "CORS error" in browser console
-- Ensure `FRONTEND_URL` on Render exactly matches your Vercel URL (no trailing slash).
+- Ensure `FRONTEND_URL` on Render exactly matches your Firebase Hosting URL (no trailing slash).
 - After updating env vars on Render, wait for the redeploy to finish.
 
 ### Dashboard shows "No data" after onboarding
-- Check that `VITE_API_URL` on Vercel has no trailing slash.
+- Check that `VITE_API_URL` on `.env.production` has no trailing slash.
 - Check Render logs: Render Dashboard → your service → "Logs" tab.
 
 ### Backend takes 30+ seconds to respond
@@ -206,5 +207,5 @@ Test each feature on the live deployment:
 | Service | URL |
 |---------|-----|
 | Backend (Render) | `https://_____.onrender.com` |
-| Frontend (Vercel) | `https://_____.vercel.app` |
+| Frontend (Firebase) | `https://careersethu-682fa.web.app` |
 | Health Check | `https://_____.onrender.com/health` |

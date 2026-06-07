@@ -16,8 +16,13 @@ const app = express();
 connectDB();
 
 // CORS Configuration
-const allowedOrigins = process.env.FRONTEND_URL
-  ? [process.env.FRONTEND_URL, "http://localhost:5173"]
+let frontendUrl = process.env.FRONTEND_URL;
+if (frontendUrl && frontendUrl.endsWith("/")) {
+  frontendUrl = frontendUrl.slice(0, -1);
+}
+
+const allowedOrigins = frontendUrl
+  ? [frontendUrl, `${frontendUrl}/`, "http://localhost:5173"]
   : ["http://localhost:5173"];
 
 app.use(cors({

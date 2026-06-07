@@ -55,7 +55,7 @@ export default function Onboarding() {
         skills
       };
 
-      const userResponse = await fetch('http://localhost:5000/api/users', {
+      const userResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/users`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userPayload)
@@ -69,7 +69,7 @@ export default function Onboarding() {
       
       // Step C: Generate Roadmap
       setLoadingState('Generating AI roadmap...');
-      const roadmapResponse = await fetch('http://localhost:5000/api/roadmaps/generate', {
+      const roadmapResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/roadmaps/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userId: user._id })
@@ -81,9 +81,12 @@ export default function Onboarding() {
 
       const roadmapDoc = await roadmapResponse.json();
       setLoadingState('Roadmap generated!');
-
-      console.log('Backend AI Generation Success:', roadmapDoc);
-      navigate('/dashboard', { state: { aiData: roadmapDoc.roadmap, userProfile: { ...formData, skills } } });
+      
+      // Store user ID in localStorage for persistence
+      localStorage.setItem('careerSethuUserId', user._id);
+      
+      // Navigate to dashboard
+      navigate('/dashboard', { state: { userId: user._id } });
     } catch (error) {
       console.error("Failed to process onboarding:", error);
       alert(`Error: ${error.message || 'Network error'}. Please check the console.`);

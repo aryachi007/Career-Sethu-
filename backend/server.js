@@ -7,6 +7,7 @@ const roadmapRoutes = require("./routes/roadmapRoutes");
 const githubRoutes = require("./routes/githubRoutes");
 const resumeRoutes = require("./routes/resumeRoutes");
 const skillGapRoutes = require("./routes/skillGapRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use("/api/roadmaps", roadmapRoutes);
 app.use("/api/github", githubRoutes);
 app.use("/api/resume", resumeRoutes);
 app.use("/api/skill-gap", skillGapRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 app.get("/", (req, res) => {
 res.send("Career Sethu Backend Running");

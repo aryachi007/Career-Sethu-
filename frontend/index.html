@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Sethu</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#131313",
+              "surface": "#131313",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-container-low": "#1b1b1b",
+              "surface-container": "#1f1f1f",
+              "surface-container-high": "#2a2a2a",
+              "surface-container-highest": "#353535",
+              "on-surface": "#e2e2e2",
+              "on-surface-variant": "#cfc4c5",
+              "primary": "#c6c6c6",
+              "on-primary": "#303030",
+              "error": "#ffb4ab",
+              "on-error": "#690005"
+            },
+            fontFamily: {
+              "headline-md": ["Plus Jakarta Sans"],
+              "label-sm": ["Inter"],
+              "display-lg-mobile": ["Plus Jakarta Sans"],
+              "display-lg": ["Plus Jakarta Sans"],
+              "body-md": ["Inter"],
+              "body-lg": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { background-color: #09090b; color: #e2e2e2; }
+      .glass-panel {
+          background: rgba(255, 255, 255, 0.03);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

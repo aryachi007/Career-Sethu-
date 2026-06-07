@@ -8,6 +8,7 @@ import MissingSkills from '../components/dashboard/MissingSkills';
 import GithubAnalysisCard from '../components/dashboard/GithubAnalysisCard';
 import ResumeAnalysisCard from '../components/dashboard/ResumeAnalysisCard';
 import AiRoadmap from '../components/dashboard/AiRoadmap';
+import JobMatchesCard from '../components/dashboard/JobMatchesCard';
 
 export default function Dashboard() {
   const location = useLocation();
@@ -119,6 +120,11 @@ export default function Dashboard() {
             <div className="flex-1 h-1/2">
                <ResumeAnalysisCard resumeAnalysis={resumeAnalysis} />
             </div>
+          </div>
+
+          {/* Bottom Row: Job Matches (12) */}
+          <div className="md:col-span-12 h-[600px]">
+            <JobMatchesCard jobMatches={dashboardData.jobMatches} userId={profile._id} />
           </div>
           
         </div>

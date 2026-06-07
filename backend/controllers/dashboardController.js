@@ -4,6 +4,7 @@ const Roadmap = require("../models/Roadmap");
 const GithubAnalysis = require("../models/GithubAnalysis");
 const ResumeAnalysis = require("../models/ResumeAnalysis");
 const SkillGap = require("../models/SkillGap");
+const JobMatch = require("../models/JobMatch");
 
 const getDashboardData = async (req, res) => {
   try {
@@ -20,13 +21,28 @@ const getDashboardData = async (req, res) => {
     }
 
     // Use Promise.all to fetch all intelligence data concurrently
-    const [roadmap, githubAnalysis, resumeAnalysis, skillGap] = await Promise.all([
+    const [roadmap, githubAnalysis, resumeAnalysis, skillGap, jobMatchesRaw] = await Promise.all([
       Roadmap.findOne({ userId }).sort({ createdAt: -1 }),
       GithubAnalysis.findOne({ userId }).sort({ createdAt: -1 }),
       ResumeAnalysis.findOne({ userId }).sort({ createdAt: -1 }),
       SkillGap.findOne({ userId }).sort({ createdAt: -1 }),
-      // TODO: Fetch Job Matches when the JobMatching model is implemented
+      JobMatch.find({ userId }).sort({ matchScore: -1 })
     ]);
+
+    // Group job matches by category
+    const categorizedJobMatches = {
+      applyNow: [],
+      applyAfterUpskilling: [],
+      longTermGoals: []
+    };
+
+    if (jobMatchesRaw && jobMatchesRaw.length > 0) {
+      jobMatchesRaw.forEach(job => {
+        if (categorizedJobMatches[job.category]) {
+          categorizedJobMatches[job.category].push(job);
+        }
+      });
+    }
 
     const dashboardPayload = {
       profile: user,
@@ -34,7 +50,7 @@ const getDashboardData = async (req, res) => {
       skillGap: skillGap || null,
       resumeAnalysis: resumeAnalysis || null,
       githubAnalysis: githubAnalysis || null,
-      jobMatches: [], // Placeholder for future feature
+      jobMatches: categorizedJobMatches,
       lastUpdated: new Date()
     };
 

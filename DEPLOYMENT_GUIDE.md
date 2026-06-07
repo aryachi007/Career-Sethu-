@@ -41,12 +41,12 @@
 ### Frontend (Firebase)
 | Variable | Required | Example |
 |----------|----------|---------|
-| `VITE_API_URL` | ✅ Yes | `https://career-sethu-backend.onrender.com` |
+| `VITE_API_URL` | ✅ Yes | `https://career-sethu.onrender.com` |
 
 > [!IMPORTANT]
 > `VITE_API_URL` must NOT have a trailing slash.
-> ❌ `https://career-sethu-backend.onrender.com/`
-> ✅ `https://career-sethu-backend.onrender.com`
+> ❌ `https://career-sethu.onrender.com/`
+> ✅ `https://career-sethu.onrender.com`
 
 ---
 
@@ -71,7 +71,7 @@ Fill in these exact values:
 
 | Setting | Value |
 |---------|-------|
-| **Name** | `career-sethu-backend` |
+| **Name** | `career-sethu` |
 | **Region** | Oregon (US West) or closest to you |
 | **Branch** | `main` |
 | **Root Directory** | `backend` |
@@ -93,7 +93,7 @@ On the same page (or under "Environment" tab), click **"Add Environment Variable
 ### Step 5: Deploy
 1. Click **"Create Web Service"**.
 2. Render will build and deploy. Wait 2-3 minutes.
-3. You will get a URL like: `https://career-sethu-backend.onrender.com`
+3. You will get a URL like: `https://career-sethu.onrender.com`
 
 ### Step 6: Verify Backend
 Visit your Render URL. You should see:
@@ -101,7 +101,7 @@ Visit your Render URL. You should see:
 { "status": "Career Sethu Backend Running", "timestamp": "..." }
 ```
 
-Also visit: `https://career-sethu-backend.onrender.com/health`
+Also visit: `https://career-sethu.onrender.com/health`
 Expected: `{ "status": "ok" }`
 
 > [!WARNING]
@@ -126,9 +126,9 @@ firebase login
 ### Step 3: Configure Environment File
 Create or update `frontend/.env.production` in the frontend root:
 ```env
-VITE_API_URL=https://career-sethu-backend.onrender.com
+VITE_API_URL=https://career-sethu.onrender.com
 ```
-*(Make sure to replace `https://career-sethu-backend.onrender.com` with the actual URL from your Render backend deployment)*
+*(Make sure to replace `https://career-sethu.onrender.com` with the actual URL from your Render backend deployment)*
 
 ### Step 4: Build the Frontend
 Navigate to the `frontend` folder and run the build command. Vite will automatically load `.env.production` and compile your assets into `frontend/dist`:
@@ -206,6 +206,6 @@ Test each feature on the live deployment:
 
 | Service | URL |
 |---------|-----|
-| Backend (Render) | `https://_____.onrender.com` |
+| Backend (Render) | `https://career-sethu.onrender.com` |
 | Frontend (Firebase) | `https://careersethu-682fa.web.app` |
-| Health Check | `https://_____.onrender.com/health` |
+| Health Check | `https://career-sethu.onrender.com/health` |

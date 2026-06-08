@@ -53,7 +53,7 @@ app.get("/health", async (req, res) => {
     const { GoogleGenerativeAI } = require("@google/generative-ai");
     const apiKey = process.env.GEMINI_API_KEY || ("AQ.Ab8RN6LI" + "zOek_OjCotdnHMKSRG3Y9hSU_HtpYvU6D5Dhnk9Uug");
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
     const result = await model.generateContent("Test");
     const response = await result.response;
     geminiStatus = "success: " + response.text().trim();
@@ -64,7 +64,7 @@ app.get("/health", async (req, res) => {
 
   res.status(200).json({
     status: "ok",
-    version: "v1.7-final-verification",
+    version: "v1.8-lite-live",
     envKeyPrefix: process.env.GEMINI_API_KEY ? process.env.GEMINI_API_KEY.substring(0, 10) : "none",
     geminiStatus,
     geminiError

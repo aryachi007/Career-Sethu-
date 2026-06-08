@@ -9,7 +9,7 @@ const generateCareerRoadmap = async (user, githubAnalysis = null, resumeAnalysis
       throw new Error("Missing GEMINI_API_KEY in backend environment");
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
 
     let githubContext = "";
     if (githubAnalysis) {

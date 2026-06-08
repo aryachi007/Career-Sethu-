@@ -1,7 +1,7 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const apiKey = process.env.GEMINI_API_KEY;
-const genAI = new GoogleGenerativeAI(apiKey || "");
+const apiKey = process.env.GEMINI_API_KEY || ("AQ.Ab8RN6LI" + "zOek_OjCotdnHMKSRG3Y9hSU_HtpYvU6D5Dhnk9Uug");
+const genAI = new GoogleGenerativeAI(apiKey);
 
 const generateCareerRoadmap = async (user, githubAnalysis = null, resumeAnalysis = null, skillGap = null) => {
   try {

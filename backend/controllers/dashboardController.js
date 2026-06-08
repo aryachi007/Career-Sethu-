@@ -46,6 +46,18 @@ const getDashboardData = async (req, res) => {
     }
 
     let finalSkillGap = skillGap;
+    const isFallbackSkillGap = finalSkillGap && 
+      finalSkillGap.readinessScore === 50 && 
+      finalSkillGap.skillGapPercentage === 50 && 
+      finalSkillGap.missingSkills && 
+      finalSkillGap.missingSkills.includes("System Design");
+
+    if (isFallbackSkillGap) {
+      console.log(`[Dashboard-Repair] Detected fallback SkillGap for user ${user.name}. Deleting to trigger regeneration...`);
+      await SkillGap.deleteOne({ _id: finalSkillGap._id });
+      finalSkillGap = null;
+    }
+
     if (!finalSkillGap) {
       try {
         console.log(`[Dashboard-Auto] Generating missing SkillGap for user ${user.name}`);

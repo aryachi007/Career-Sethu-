@@ -11,45 +11,29 @@ const analyzeGithubProfile = async (githubUrl) => {
   // Extract username from URL (e.g., https://github.com/octocat)
   const username = githubUrl.split("github.com/")[1].split("/")[0].trim();
 
-  let profileData;
-  let reposData = [];
-  
-  try {
-    const profileRes = await fetch(`https://api.github.com/users/${username}`, {
-      headers: {
-        "User-Agent": "Career-Sethu-App"
-      }
-    });
-    
-    if (profileRes.ok) {
-      profileData = await profileRes.json();
-      const reposRes = await fetch(`https://api.github.com/users/${username}/repos?sort=stars&per_page=100`, {
-        headers: {
-          "User-Agent": "Career-Sethu-App"
-        }
-      });
-      if (reposRes.ok) {
-        reposData = await reposRes.json();
-      }
-    } else {
-      console.warn(`[GitHub-Service] GitHub API returned status ${profileRes.status} for ${username}. Using mock data fallback.`);
+  // Fetch basic profile
+  const profileRes = await fetch(`https://api.github.com/users/${username}`, {
+    headers: {
+      "User-Agent": "Career-Sethu-App"
     }
-  } catch (err) {
-    console.warn(`[GitHub-Service] GitHub API fetch failed for ${username}: ${err.message}. Using mock data fallback.`);
+  });
+  
+  if (!profileRes.ok) {
+    throw new Error(`GitHub API profile fetch failed for user ${username} with status ${profileRes.status}`);
   }
+  const profileData = await profileRes.json();
 
-  if (!profileData) {
-    profileData = { public_repos: 18 };
-    reposData = [
-      { name: "Career-Sethu-", language: "JavaScript", stargazers_count: 5 },
-      { name: "Canodesk-", language: "TypeScript", stargazers_count: 3 },
-      { name: "react-dashboard", language: "JavaScript", stargazers_count: 12 },
-      { name: "python-automation", language: "Python", stargazers_count: 7 },
-      { name: "express-api-template", language: "JavaScript", stargazers_count: 4 },
-      { name: "html-css-portfolio", language: "HTML", stargazers_count: 2 },
-      { name: "data-structures-algorithms", language: "C++", stargazers_count: 6 }
-    ];
+  // Fetch repos
+  const reposRes = await fetch(`https://api.github.com/users/${username}/repos?sort=stars&per_page=100`, {
+    headers: {
+      "User-Agent": "Career-Sethu-App"
+    }
+  });
+  
+  if (!reposRes.ok) {
+    throw new Error(`GitHub API repos fetch failed for user ${username} with status ${reposRes.status}`);
   }
+  const reposData = await reposRes.json();
 
   // Aggregate stats
   const repoCount = profileData.public_repos || 0;
@@ -91,12 +75,7 @@ const analyzeGithubProfile = async (githubUrl) => {
     No markdown, no backticks, just raw JSON.
   `;
 
-  let analysis = {
-    estimatedSkillLevel: "Unknown",
-    strengths: [],
-    weaknesses: ["Not enough data to analyze"]
-  };
-
+  let analysis;
   try {
     const result = await model.generateContent(prompt);
     const response = await result.response;
@@ -105,7 +84,7 @@ const analyzeGithubProfile = async (githubUrl) => {
     analysis = JSON.parse(text);
   } catch (error) {
     console.error("Gemini failed to analyze GitHub stats:", error);
-    // Fallback to defaults
+    throw new Error(`Gemini analysis failed: ${error.message}`);
   }
 
   return {

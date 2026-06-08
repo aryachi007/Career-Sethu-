@@ -64,7 +64,7 @@ app.get("/health", async (req, res) => {
 
   res.status(200).json({
     status: "ok",
-    version: "v1.9-real-github-data",
+    version: "v2.0-force-github-regeneration",
     envKeyPrefix: process.env.GEMINI_API_KEY ? process.env.GEMINI_API_KEY.substring(0, 10) : "none",
     geminiStatus,
     geminiError

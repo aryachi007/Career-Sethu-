@@ -32,7 +32,9 @@ const getDashboardData = async (req, res) => {
     let finalGithub = githubAnalysis;
     const isFallbackGithub = finalGithub && (
       finalGithub.estimatedSkillLevel === "Unknown" ||
-      (finalGithub.weaknesses && finalGithub.weaknesses.includes("Not enough data to analyze"))
+      (finalGithub.weaknesses && finalGithub.weaknesses.includes("Not enough data to analyze")) ||
+      finalGithub.repoCount === 18 ||
+      (finalGithub.topRepositories && finalGithub.topRepositories.includes("react-dashboard"))
     );
 
     if (isFallbackGithub) {

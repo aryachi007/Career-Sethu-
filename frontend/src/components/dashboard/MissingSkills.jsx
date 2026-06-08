@@ -2,7 +2,13 @@ import React from 'react';
 import { AlertTriangle } from 'lucide-react';
 import FramerGlowCard from '../common/FramerGlowCard';
 
-export default function MissingSkills({ missingSkills }) {
+export default function MissingSkills({ skillGap }) {
+  const missingSkills = skillGap?.missingSkills;
+  const readinessScore = skillGap?.readinessScore;
+
+  const hasData = skillGap && Array.isArray(missingSkills);
+  const isFullyQualified = hasData && readinessScore >= 95;
+
   return (
     <FramerGlowCard className="h-full">
       <div className="flex flex-col h-full">
@@ -14,9 +20,17 @@ export default function MissingSkills({ missingSkills }) {
         </div>
 
         <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
-          {(!missingSkills || missingSkills.length === 0) ? (
+          {!hasData ? (
+            <div className="h-full flex flex-col items-center justify-center text-center opacity-70 p-4">
+              <p className="text-zinc-500 text-sm mb-2">No Skill Gap Data Available</p>
+            </div>
+          ) : isFullyQualified ? (
             <div className="h-full flex items-center justify-center">
-              <p className="text-zinc-500 text-sm">You have all the required skills!</p>
+              <p className="text-emerald-400 text-sm font-medium">You have all the required skills!</p>
+            </div>
+          ) : missingSkills.length === 0 ? (
+            <div className="h-full flex items-center justify-center text-center">
+              <p className="text-zinc-500 text-sm">No critical missing skills identified.</p>
             </div>
           ) : (
             <div className="flex flex-wrap gap-2">

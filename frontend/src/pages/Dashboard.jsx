@@ -105,7 +105,7 @@ export default function Dashboard() {
             <ReadinessScore score={skillGap?.readinessScore} gapPercentage={skillGap?.skillGapPercentage} />
           </div>
           <div className="md:col-span-4 h-[300px]">
-            <MissingSkills missingSkills={skillGap?.missingSkills} />
+            <MissingSkills skillGap={skillGap} />
           </div>
 
           {/* Middle Row: AI Roadmap (8) + GitHub/Resume (4) */}

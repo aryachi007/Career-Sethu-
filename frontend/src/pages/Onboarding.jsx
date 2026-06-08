@@ -66,8 +66,40 @@ export default function Onboarding() {
       }
 
       const user = await userResponse.json();
+
+      // Step B: Analyze GitHub if URL is provided
+      if (formData.githubUrl && formData.githubUrl.trim() !== '') {
+        setLoadingState('Analyzing GitHub profile...');
+        try {
+          const githubResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/github/analyze`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId: user._id })
+          });
+          if (!githubResponse.ok) {
+            console.warn('GitHub analysis failed during onboarding, continuing...');
+          }
+        } catch (githubErr) {
+          console.warn('Failed to call GitHub analysis:', githubErr);
+        }
+      }
+
+      // Step C: Analyze Skill Gap
+      setLoadingState('Analyzing skill gaps...');
+      try {
+        const skillGapResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/skill-gap/analyze`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId: user._id })
+        });
+        if (!skillGapResponse.ok) {
+          console.warn('Skill gap analysis failed during onboarding, continuing...');
+        }
+      } catch (skillGapErr) {
+        console.warn('Failed to call Skill Gap analysis:', skillGapErr);
+      }
       
-      // Step C: Generate Roadmap
+      // Step D: Generate Roadmap
       setLoadingState('Generating AI roadmap...');
       const roadmapResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/roadmaps/generate`, {
         method: 'POST',
@@ -79,7 +111,7 @@ export default function Onboarding() {
         throw new Error('Roadmap generation failed');
       }
 
-      const roadmapDoc = await roadmapResponse.json();
+      await roadmapResponse.json();
       setLoadingState('Roadmap generated!');
       
       // Store user ID in localStorage for persistence

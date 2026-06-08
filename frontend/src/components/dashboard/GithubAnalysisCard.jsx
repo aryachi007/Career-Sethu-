@@ -8,8 +8,8 @@ export default function GithubAnalysisCard({ githubAnalysis }) {
       <FramerGlowCard className="h-full">
         <div className="flex flex-col items-center justify-center h-full text-center p-6 opacity-70">
           <GitBranch className="w-12 h-12 text-zinc-600 mb-4" />
-          <h3 className="text-lg font-medium text-white mb-2">No GitHub Connected</h3>
-          <p className="text-sm text-zinc-400">Connect your GitHub account in settings to receive code analysis and skill verification.</p>
+          <h3 className="text-lg font-medium text-white mb-2">No GitHub Analysis Available</h3>
+          <p className="text-sm text-zinc-400">Provide a GitHub URL during onboarding to view automated code strengths and repository insights.</p>
         </div>
       </FramerGlowCard>
     );

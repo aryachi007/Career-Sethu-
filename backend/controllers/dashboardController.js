@@ -29,6 +29,48 @@ const getDashboardData = async (req, res) => {
       JobMatch.find({ userId }).sort({ matchScore: -1 })
     ]);
 
+    let finalGithub = githubAnalysis;
+    if (!finalGithub && user.githubUrl && user.githubUrl.includes("github.com/")) {
+      try {
+        console.log(`[Dashboard-Auto] Generating missing GitHub analysis for user ${user.name}`);
+        const { analyzeGithubProfile } = require("../services/githubService");
+        const analysisData = await analyzeGithubProfile(user.githubUrl);
+        finalGithub = await GithubAnalysis.create({
+          userId,
+          ...analysisData
+        });
+        console.log(`[Dashboard-Auto] GitHub analysis generated and saved.`);
+      } catch (err) {
+        console.error(`[Dashboard-Auto] Failed to generate GitHub analysis:`, err.message);
+      }
+    }
+
+    let finalSkillGap = skillGap;
+    if (!finalSkillGap) {
+      try {
+        console.log(`[Dashboard-Auto] Generating missing SkillGap for user ${user.name}`);
+        const { determineSkillGaps } = require("../services/skillGapService");
+        
+        let rawSkills = [...(user.skills || [])];
+        if (finalGithub && finalGithub.topLanguages) {
+          rawSkills.push(...finalGithub.topLanguages);
+        }
+        if (resumeAnalysis && resumeAnalysis.detectedSkills) {
+          rawSkills.push(...resumeAnalysis.detectedSkills);
+        }
+
+        const analysisData = await determineSkillGaps(rawSkills, user.targetRole);
+        finalSkillGap = await SkillGap.create({
+          userId,
+          targetRole: user.targetRole,
+          ...analysisData
+        });
+        console.log(`[Dashboard-Auto] SkillGap generated and saved. Score: ${analysisData.readinessScore}%`);
+      } catch (err) {
+        console.error(`[Dashboard-Auto] Failed to generate SkillGap:`, err.message);
+      }
+    }
+
     // Group job matches by category
     const categorizedJobMatches = {
       applyNow: [],
@@ -47,9 +89,9 @@ const getDashboardData = async (req, res) => {
     const dashboardPayload = {
       profile: user,
       roadmap: roadmap ? roadmap.roadmap : null,
-      skillGap: skillGap || null,
+      skillGap: finalSkillGap || null,
       resumeAnalysis: resumeAnalysis || null,
-      githubAnalysis: githubAnalysis || null,
+      githubAnalysis: finalGithub || null,
       jobMatches: categorizedJobMatches,
       lastUpdated: new Date()
     };

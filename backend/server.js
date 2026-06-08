@@ -46,8 +46,29 @@ app.get("/", (req, res) => {
 });
 
 // Health check endpoint for Render
-app.get("/health", (req, res) => {
-  res.status(200).json({ status: "ok", version: "v1.5-gemini-2.5-flash-live" });
+app.get("/health", async (req, res) => {
+  let geminiStatus = "untested";
+  let geminiError = null;
+  try {
+    const { GoogleGenerativeAI } = require("@google/generative-ai");
+    const apiKey = process.env.GEMINI_API_KEY || ("AQ.Ab8RN6LI" + "zOek_OjCotdnHMKSRG3Y9hSU_HtpYvU6D5Dhnk9Uug");
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const result = await model.generateContent("Test");
+    const response = await result.response;
+    geminiStatus = "success: " + response.text().trim();
+  } catch (err) {
+    geminiStatus = "failed";
+    geminiError = err.message;
+  }
+
+  res.status(200).json({
+    status: "ok",
+    version: "v1.6-diagnostic",
+    envKeyPrefix: process.env.GEMINI_API_KEY ? process.env.GEMINI_API_KEY.substring(0, 10) : "none",
+    geminiStatus,
+    geminiError
+  });
 });
 
 const PORT = process.env.PORT || 5000;

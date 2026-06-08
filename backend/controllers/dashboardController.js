@@ -30,6 +30,17 @@ const getDashboardData = async (req, res) => {
     ]);
 
     let finalGithub = githubAnalysis;
+    const isFallbackGithub = finalGithub && (
+      finalGithub.estimatedSkillLevel === "Unknown" ||
+      (finalGithub.weaknesses && finalGithub.weaknesses.includes("Not enough data to analyze"))
+    );
+
+    if (isFallbackGithub) {
+      console.log(`[Dashboard-Repair] Detected fallback GithubAnalysis for user ${user.name}. Deleting to trigger regeneration...`);
+      await GithubAnalysis.deleteOne({ _id: finalGithub._id });
+      finalGithub = null;
+    }
+
     if (!finalGithub && user.githubUrl && user.githubUrl.includes("github.com/")) {
       try {
         console.log(`[Dashboard-Auto] Generating missing GitHub analysis for user ${user.name}`);

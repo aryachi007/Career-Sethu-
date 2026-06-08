@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
 
 // Health check endpoint for Render
 app.get("/health", (req, res) => {
-  res.status(200).json({ status: "ok" });
+  res.status(200).json({ status: "ok", version: "v1.2-fallback-logic" });
 });
 
 const PORT = process.env.PORT || 5000;

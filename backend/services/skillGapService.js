@@ -4,30 +4,30 @@ const apiKey = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey || "");
 
 const determineSkillGaps = async (rawSkills, targetRole) => {
-  if (!apiKey) {
-    throw new Error("Missing GEMINI_API_KEY in backend environment");
-  }
-
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-  const prompt = `
-    You are an expert technical recruiter and data normalizer.
-    The user is aiming for the target role: "${targetRole}"
-    They have a raw, messy list of skills aggregated from their resume, GitHub, and self-reporting:
-    [${rawSkills.join(", ")}]
-
-    Please do the following:
-    1. Normalize and deduplicate the raw skills into a clean list of "currentSkills" (e.g., combine 'React' and 'React.js').
-    2. Determine the standard top 10-15 "requiredSkills" for the target role.
-
-    Return EXACTLY a valid JSON object with no markdown and no backticks:
-    {
-      "currentSkills": ["Normalized Skill 1", "Normalized Skill 2"],
-      "requiredSkills": ["Required Skill 1", "Required Skill 2"]
-    }
-  `;
-
   try {
+    if (!apiKey) {
+      throw new Error("Missing GEMINI_API_KEY in backend environment");
+    }
+
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    const prompt = `
+      You are an expert technical recruiter and data normalizer.
+      The user is aiming for the target role: "${targetRole}"
+      They have a raw, messy list of skills aggregated from their resume, GitHub, and self-reporting:
+      [${rawSkills.join(", ")}]
+
+      Please do the following:
+      1. Normalize and deduplicate the raw skills into a clean list of "currentSkills" (e.g., combine 'React' and 'React.js').
+      2. Determine the standard top 10-15 "requiredSkills" for the target role.
+
+      Return EXACTLY a valid JSON object with no markdown and no backticks:
+      {
+        "currentSkills": ["Normalized Skill 1", "Normalized Skill 2"],
+        "requiredSkills": ["Required Skill 1", "Required Skill 2"]
+      }
+    `;
+
     const result = await model.generateContent(prompt);
     const response = await result.response;
     let text = response.text();

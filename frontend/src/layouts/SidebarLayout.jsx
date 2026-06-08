@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, NavLink, BrowserRouter, useInRouterContext } from 'react-router-dom';
-import { LayoutDashboard, Map, Briefcase, BrainCircuit } from 'lucide-react';
+import { LayoutDashboard, Map, Briefcase, BrainCircuit, User } from 'lucide-react';
 
 function SidebarContent() {
   return (
@@ -68,20 +68,40 @@ function SidebarContent() {
             >
               <BrainCircuit className="w-5 h-5" /> Skills
             </NavLink>
+
+            <NavLink 
+              to="/profile" 
+              className={({ isActive }) => 
+                `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-medium ${
+                  isActive 
+                    ? 'bg-white/10 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]' 
+                    : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                }`
+              }
+            >
+              <User className="w-5 h-5" /> Profile
+            </NavLink>
           </nav>
         </div>
         
         {/* User Profile Snippet at Bottom */}
         <div className="mt-auto p-6 border-t border-white/5">
-          <div className="flex items-center gap-3 px-2">
-            <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-300 font-bold border border-white/10">
+          <NavLink 
+            to="/profile"
+            className={({ isActive }) => 
+              `flex items-center gap-3 p-2 rounded-xl transition-all duration-200 w-full ${
+                isActive ? 'bg-white/10 text-white' : 'text-zinc-400 hover:text-white hover:bg-white/5'
+              }`
+            }
+          >
+            <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-300 font-bold border border-white/10 shrink-0">
               S
             </div>
             <div>
               <p className="text-sm font-semibold text-white">Sethu User</p>
               <p className="text-xs text-zinc-500">Free Plan</p>
             </div>
-          </div>
+          </NavLink>
         </div>
       </aside>
 

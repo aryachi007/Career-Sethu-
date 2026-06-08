@@ -8,7 +8,7 @@ const analyzeResume = async (resumeText, targetRole) => {
     throw new Error("Missing GEMINI_API_KEY in backend environment");
   }
 
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   const prompt = `
     You are an expert AI recruiter and resume reviewer.

@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
 
 // Health check endpoint for Render
 app.get("/health", (req, res) => {
-  res.status(200).json({ status: "ok", version: "v1.4-github-fallback-repair" });
+  res.status(200).json({ status: "ok", version: "v1.5-gemini-2.5-flash-live" });
 });
 
 const PORT = process.env.PORT || 5000;

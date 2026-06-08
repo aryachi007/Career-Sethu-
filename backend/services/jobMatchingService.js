@@ -5,7 +5,7 @@ const genAI = new GoogleGenerativeAI(apiKey);
 
 const generateJobMatches = async (user, resume, github, skillGap, roadmapRaw) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // Prompt Size Protections
     const safeJoin = (arr, limit) => (Array.isArray(arr) ? arr.slice(0, limit).join(', ') : 'None');

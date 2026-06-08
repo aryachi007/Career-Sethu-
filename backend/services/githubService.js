@@ -47,7 +47,7 @@ const analyzeGithubProfile = async (githubUrl) => {
     .map(r => r.name);
 
   // Use Gemini to analyze skill level, strengths, weaknesses
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   const prompt = `
     Analyze this developer's GitHub statistics:

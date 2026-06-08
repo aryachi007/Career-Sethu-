@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet, NavLink, BrowserRouter, useInRouterContext } from 'react-router-dom';
 import { LayoutDashboard, Map, Briefcase, BrainCircuit, User } from 'lucide-react';
+import Logo from '../components/common/Logo';
 
 function SidebarContent() {
   return (
@@ -9,11 +10,8 @@ function SidebarContent() {
       {/* Sidebar Navigation */}
       <aside className="w-64 border-r border-white/10 bg-[#09090b]/80 backdrop-blur-xl flex flex-col z-20 shrink-0">
         <div className="p-6">
-          <div className="flex items-center gap-3 font-bold text-xl tracking-tight text-white mb-10">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-sky-400 to-violet-600 flex items-center justify-center text-sm shadow-[0_0_15px_rgba(139,92,246,0.5)]">
-              CS
-            </div>
-            Career Sethu
+          <div className="mb-10">
+            <Logo size="md" />
           </div>
 
           <nav className="flex flex-col gap-2">

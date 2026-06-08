@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link2, X, Loader2 } from 'lucide-react';
 import FramerGlowCard from '../components/common/FramerGlowCard';
+import Logo from '../components/common/Logo';
 
 export default function Onboarding() {
   const navigate = useNavigate();
@@ -134,6 +135,7 @@ export default function Onboarding() {
       <div className="fixed inset-0 z-0 pointer-events-none bg-black/80 backdrop-blur-3xl"></div>
 
       <div className="relative z-10 w-full max-w-[440px]">
+        <Logo size="lg" className="justify-center mb-6" showText={true} />
         <FramerGlowCard>
           <div className="flex flex-col gap-6 p-2">
             <header className="flex flex-col gap-1 items-center text-center">

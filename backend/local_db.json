@@ -1,0 +1,744 @@
+{
+  "users": [
+    {
+      "_id": "6a272a8af0d22cee0d33d672",
+      "name": "ARYAN R",
+      "college": "cse",
+      "targetRole": "worker",
+      "targetCompany": "GOOGLE",
+      "githubUrl": "https://github.com/aryachi007",
+      "skills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "css"
+      ],
+      "createdAt": "2026-06-08T20:48:10.617Z",
+      "updatedAt": "2026-06-08T20:48:10.617Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a27299ef0d22cee0d33d66f",
+      "name": "ARYAN R",
+      "college": "cse",
+      "targetRole": "CEO",
+      "targetCompany": "GOOGLE",
+      "githubUrl": "https://github.com/aryachi007",
+      "skills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "css"
+      ],
+      "createdAt": "2026-06-08T20:44:14.165Z",
+      "updatedAt": "2026-06-08T20:44:14.165Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a2725c378da39ffe39c96b1",
+      "name": "ARYAN R",
+      "college": "cse",
+      "targetRole": "worker",
+      "targetCompany": "GOOGLE",
+      "githubUrl": "https://github.com/aryachi007",
+      "skills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "css"
+      ],
+      "createdAt": "2026-06-08T20:27:47.902Z",
+      "updatedAt": "2026-06-08T20:27:47.902Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a27257e78da39ffe39c96af",
+      "name": "ARYAN R",
+      "college": "cse",
+      "targetRole": "worker",
+      "targetCompany": "GOOGLE",
+      "githubUrl": "https://github.com/aryachi007",
+      "skills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "css"
+      ],
+      "createdAt": "2026-06-08T20:26:38.533Z",
+      "updatedAt": "2026-06-08T20:26:38.533Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a27256078da39ffe39c96ad",
+      "name": "ARYAN R",
+      "college": "cse",
+      "targetRole": "worker",
+      "targetCompany": "GOOGLE",
+      "githubUrl": "https://github.com/aryachi007",
+      "skills": [
+        "React",
+        "JavaScript",
+        "Python"
+      ],
+      "createdAt": "2026-06-08T20:26:08.976Z",
+      "updatedAt": "2026-06-08T20:26:08.976Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a27240f78da39ffe39c96ab",
+      "name": "ARYAN R",
+      "college": "cse",
+      "targetRole": "worker",
+      "targetCompany": "GOOGLE",
+      "githubUrl": "https://github.com/aryachi007",
+      "skills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "css"
+      ],
+      "createdAt": "2026-06-08T20:20:31.454Z",
+      "updatedAt": "2026-06-08T20:20:31.454Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a285da5e6a1664b784b96f3",
+      "name": "TEJAS",
+      "college": "cse",
+      "targetRole": "frontend developer",
+      "targetCompany": "IBM",
+      "githubUrl": "https://github.com/aryachi007",
+      "skills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "CSS"
+      ],
+      "createdAt": "2026-06-09T18:38:29.882Z",
+      "updatedAt": "2026-06-09T18:38:29.882Z"
+    }
+  ],
+  "roadmaps": [
+    {
+      "_id": "roadmap_6a272a8af0d22cee0d33d672",
+      "userId": "6a272a8af0d22cee0d33d672",
+      "roadmap": {
+        "title": "worker Accelerator Path for GOOGLE",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a worker tier at GOOGLE. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for GOOGLE scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python, css. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for GOOGLE."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T18:33:54.518Z",
+      "updatedAt": "2026-06-09T18:33:54.518Z"
+    },
+    {
+      "_id": "roadmap_6a27299ef0d22cee0d33d66f",
+      "userId": "6a27299ef0d22cee0d33d66f",
+      "roadmap": {
+        "title": "CEO Accelerator Path for GOOGLE",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a CEO tier at GOOGLE. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for GOOGLE scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python, css. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for GOOGLE."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T18:33:55.288Z",
+      "updatedAt": "2026-06-09T18:33:55.288Z"
+    },
+    {
+      "_id": "6a285da7e6a1664b784b96f5",
+      "userId": "6a285da5e6a1664b784b96f3",
+      "roadmap": {
+        "title": "frontend developer Accelerator Path for IBM",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a frontend developer tier at IBM. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for IBM scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python, CSS. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for IBM."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T18:38:31.825Z",
+      "updatedAt": "2026-06-09T18:38:31.825Z"
+    }
+  ],
+  "githubanalyses": [
+    {
+      "_id": "6a2738418c94753a405c1427",
+      "userId": "6a272a8af0d22cee0d33d672",
+      "githubUsername": "aryachi007",
+      "repoCount": 18,
+      "topLanguages": [
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "HTML",
+        "C++"
+      ],
+      "topRepositories": [
+        "react-dashboard",
+        "python-automation",
+        "data-structures-algorithms"
+      ],
+      "estimatedSkillLevel": "Intermediate",
+      "strengths": [
+        "JavaScript/TypeScript development",
+        "Python for automation/data tasks",
+        "Fundamental programming concepts (data structures, algorithms)"
+      ],
+      "weaknesses": [
+        "Limited scope of projects presented",
+        "Potential for deeper exploration in C++"
+      ],
+      "createdAt": "2026-06-08T21:46:41.565Z",
+      "updatedAt": "2026-06-08T21:46:41.565Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a284a85f05ec67b89ed9db9",
+      "userId": "6a27299ef0d22cee0d33d66f",
+      "githubUsername": "aryachi007",
+      "repoCount": 2,
+      "topLanguages": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "topRepositories": [
+        "Career-Sethu-",
+        "Canodesk-"
+      ],
+      "estimatedSkillLevel": "Beginner",
+      "strengths": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "weaknesses": [
+        "Limited public repositories",
+        "Limited project diversity"
+      ],
+      "createdAt": "2026-06-09T17:16:53.957Z",
+      "updatedAt": "2026-06-09T17:16:53.957Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a284a89f05ec67b89ed9dbb",
+      "userId": "6a2725c378da39ffe39c96b1",
+      "githubUsername": "aryachi007",
+      "repoCount": 2,
+      "topLanguages": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "topRepositories": [
+        "Career-Sethu-",
+        "Canodesk-"
+      ],
+      "estimatedSkillLevel": "Beginner",
+      "strengths": [
+        "JavaScript",
+        "TypeScript",
+        "Original repository development"
+      ],
+      "weaknesses": [
+        "Limited project experience (2 public repos)",
+        "Limited public contribution history (implied by low repo count)"
+      ],
+      "createdAt": "2026-06-09T17:16:57.067Z",
+      "updatedAt": "2026-06-09T17:16:57.067Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a284a8cf05ec67b89ed9dbd",
+      "userId": "6a27257e78da39ffe39c96af",
+      "githubUsername": "aryachi007",
+      "repoCount": 2,
+      "topLanguages": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "topRepositories": [
+        "Career-Sethu-",
+        "Canodesk-"
+      ],
+      "estimatedSkillLevel": "Beginner",
+      "strengths": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "weaknesses": [
+        "Limited public repository count",
+        "Limited project diversity"
+      ],
+      "createdAt": "2026-06-09T17:17:00.613Z",
+      "updatedAt": "2026-06-09T17:17:00.613Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a284a8ff05ec67b89ed9dbf",
+      "userId": "6a27256078da39ffe39c96ad",
+      "githubUsername": "aryachi007",
+      "repoCount": 2,
+      "topLanguages": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "topRepositories": [
+        "Career-Sethu-",
+        "Canodesk-"
+      ],
+      "estimatedSkillLevel": "Beginner",
+      "strengths": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "weaknesses": [
+        "Limited public repository count",
+        "Limited public project diversity"
+      ],
+      "createdAt": "2026-06-09T17:17:03.665Z",
+      "updatedAt": "2026-06-09T17:17:03.665Z",
+      "__v": 0
+    },
+    {
+      "userId": "6a27240f78da39ffe39c96ab",
+      "githubUsername": "aryachi007",
+      "repoCount": 2,
+      "topLanguages": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "topRepositories": [
+        "Career-Sethu-",
+        "Canodesk-"
+      ],
+      "estimatedSkillLevel": "Beginner",
+      "strengths": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "weaknesses": [
+        "Limited project scope",
+        "Limited open-source contribution"
+      ],
+      "_id": "6a285c9a46db16ce5b27367c",
+      "createdAt": "2026-06-09T18:34:02.079Z",
+      "updatedAt": "2026-06-09T18:34:02.079Z",
+      "__v": 0
+    }
+  ],
+  "resumeanalyses": [],
+  "skillgaps": [
+    {
+      "_id": "6a2734f7af071867417f9851",
+      "userId": "6a272a8af0d22cee0d33d672",
+      "targetRole": "worker",
+      "currentSkills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "CSS",
+        "TypeScript"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "Python",
+        "React",
+        "HTML",
+        "CSS",
+        "TypeScript",
+        "Git",
+        "Node.js",
+        "SQL Databases",
+        "RESTful APIs",
+        "Data Structures & Algorithms",
+        "Problem Solving",
+        "Agile Methodologies",
+        "Web Development Principles",
+        "Command Line Interface"
+      ],
+      "matchedSkills": [
+        "JavaScript",
+        "Python",
+        "React",
+        "CSS",
+        "TypeScript"
+      ],
+      "missingSkills": [
+        "HTML",
+        "Git",
+        "Node.js",
+        "SQL Databases",
+        "RESTful APIs",
+        "Data Structures & Algorithms",
+        "Problem Solving",
+        "Agile Methodologies",
+        "Web Development Principles",
+        "Command Line Interface"
+      ],
+      "skillGapPercentage": 67,
+      "readinessScore": 33,
+      "createdAt": "2026-06-08T21:32:39.862Z",
+      "updatedAt": "2026-06-08T21:32:39.862Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a284a87f05ec67b89ed9dba",
+      "userId": "6a27299ef0d22cee0d33d66f",
+      "targetRole": "CEO",
+      "currentSkills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "CSS",
+        "TypeScript"
+      ],
+      "requiredSkills": [
+        "Strategic Planning",
+        "Financial Management",
+        "Leadership",
+        "Team Building",
+        "Business Development",
+        "Operations Management",
+        "Market Analysis",
+        "Sales Strategy",
+        "Product Management",
+        "Investor Relations",
+        "Corporate Governance",
+        "Risk Management",
+        "Innovation",
+        "Public Speaking",
+        "Negotiation"
+      ],
+      "matchedSkills": [],
+      "missingSkills": [
+        "Strategic Planning",
+        "Financial Management",
+        "Leadership",
+        "Team Building",
+        "Business Development",
+        "Operations Management",
+        "Market Analysis",
+        "Sales Strategy",
+        "Product Management",
+        "Investor Relations",
+        "Corporate Governance",
+        "Risk Management",
+        "Innovation",
+        "Public Speaking",
+        "Negotiation"
+      ],
+      "skillGapPercentage": 100,
+      "readinessScore": 0,
+      "createdAt": "2026-06-09T17:16:55.151Z",
+      "updatedAt": "2026-06-09T17:16:55.151Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a284a8af05ec67b89ed9dbc",
+      "userId": "6a2725c378da39ffe39c96b1",
+      "targetRole": "worker",
+      "currentSkills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "CSS",
+        "TypeScript"
+      ],
+      "requiredSkills": [
+        "Problem Solving",
+        "Communication",
+        "Teamwork",
+        "Time Management",
+        "Adaptability",
+        "Attention to Detail",
+        "Dependability",
+        "Critical Thinking",
+        "Customer Service",
+        "Active Listening",
+        "Task Management",
+        "Patience",
+        "Flexibility",
+        "Interpersonal Skills"
+      ],
+      "matchedSkills": [],
+      "missingSkills": [
+        "Problem Solving",
+        "Communication",
+        "Teamwork",
+        "Time Management",
+        "Adaptability",
+        "Attention to Detail",
+        "Dependability",
+        "Critical Thinking",
+        "Customer Service",
+        "Active Listening",
+        "Task Management",
+        "Patience",
+        "Flexibility",
+        "Interpersonal Skills"
+      ],
+      "skillGapPercentage": 100,
+      "readinessScore": 0,
+      "createdAt": "2026-06-09T17:16:58.158Z",
+      "updatedAt": "2026-06-09T17:16:58.158Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a284a8df05ec67b89ed9dbe",
+      "userId": "6a27257e78da39ffe39c96af",
+      "targetRole": "worker",
+      "currentSkills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "CSS",
+        "TypeScript"
+      ],
+      "requiredSkills": [
+        "Attention to Detail",
+        "Reliability",
+        "Time Management",
+        "Teamwork",
+        "Problem-Solving",
+        "Communication",
+        "Adaptability",
+        "Basic Computer Skills",
+        "Manual Dexterity",
+        "Physical Stamina",
+        "Safety Awareness",
+        "Task Prioritization",
+        "Following Instructions"
+      ],
+      "matchedSkills": [],
+      "missingSkills": [
+        "Attention to Detail",
+        "Reliability",
+        "Time Management",
+        "Teamwork",
+        "Problem-Solving",
+        "Communication",
+        "Adaptability",
+        "Basic Computer Skills",
+        "Manual Dexterity",
+        "Physical Stamina",
+        "Safety Awareness",
+        "Task Prioritization",
+        "Following Instructions"
+      ],
+      "skillGapPercentage": 100,
+      "readinessScore": 0,
+      "createdAt": "2026-06-09T17:17:01.807Z",
+      "updatedAt": "2026-06-09T17:17:01.807Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a284a90f05ec67b89ed9dc0",
+      "userId": "6a27256078da39ffe39c96ad",
+      "targetRole": "worker",
+      "currentSkills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "TypeScript"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "Python",
+        "HTML",
+        "CSS",
+        "SQL",
+        "Git",
+        "Problem Solving",
+        "Communication",
+        "Teamwork",
+        "Adaptability",
+        "Attention to Detail",
+        "Time Management",
+        "Microsoft Office Suite",
+        "Basic Data Entry"
+      ],
+      "matchedSkills": [
+        "JavaScript",
+        "Python"
+      ],
+      "missingSkills": [
+        "HTML",
+        "CSS",
+        "SQL",
+        "Git",
+        "Problem Solving",
+        "Communication",
+        "Teamwork",
+        "Adaptability",
+        "Attention to Detail",
+        "Time Management",
+        "Microsoft Office Suite",
+        "Basic Data Entry"
+      ],
+      "skillGapPercentage": 86,
+      "readinessScore": 14,
+      "createdAt": "2026-06-09T17:17:04.829Z",
+      "updatedAt": "2026-06-09T17:17:04.829Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a284a93f05ec67b89ed9dc1",
+      "userId": "6a27240f78da39ffe39c96ab",
+      "targetRole": "worker",
+      "currentSkills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "CSS"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "React",
+        "Node.js",
+        "API Integration",
+        "Version Control (Git)",
+        "Problem Solving",
+        "Communication",
+        "Adaptability",
+        "Time Management",
+        "Databases",
+        "Testing"
+      ],
+      "matchedSkills": [
+        "JavaScript",
+        "CSS",
+        "React"
+      ],
+      "missingSkills": [
+        "HTML",
+        "Node.js",
+        "API Integration",
+        "Version Control (Git)",
+        "Problem Solving",
+        "Communication",
+        "Adaptability",
+        "Time Management",
+        "Databases",
+        "Testing"
+      ],
+      "skillGapPercentage": 77,
+      "readinessScore": 23,
+      "createdAt": "2026-06-09T17:17:07.103Z",
+      "updatedAt": "2026-06-09T17:17:07.103Z",
+      "__v": 0
+    },
+    {
+      "_id": "6a285da7e6a1664b784b96f4",
+      "userId": "6a285da5e6a1664b784b96f3",
+      "targetRole": "frontend developer",
+      "currentSkills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "CSS"
+      ],
+      "requiredSkills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "CSS",
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "matchedSkills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "CSS"
+      ],
+      "missingSkills": [
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "readinessScore": 50,
+      "skillGapPercentage": 50,
+      "createdAt": "2026-06-09T18:38:31.647Z",
+      "updatedAt": "2026-06-09T18:38:31.647Z"
+    }
+  ],
+  "jobmatches": []
+}

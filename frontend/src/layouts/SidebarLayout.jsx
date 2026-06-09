@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet, NavLink, BrowserRouter, useInRouterContext } from 'react-router-dom';
-import { LayoutDashboard, Map, Briefcase, BrainCircuit, User } from 'lucide-react';
+import { LayoutDashboard, Map, Briefcase, BrainCircuit, User, Settings } from 'lucide-react';
 import Logo from '../components/common/Logo';
 
 function SidebarContent() {
@@ -78,6 +78,19 @@ function SidebarContent() {
               }
             >
               <User className="w-5 h-5" /> Profile
+            </NavLink>
+
+            <NavLink 
+              to="/settings" 
+              className={({ isActive }) => 
+                `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 font-medium ${
+                  isActive 
+                    ? 'bg-white/10 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]' 
+                    : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                }`
+              }
+            >
+              <Settings className="w-5 h-5" /> Settings
             </NavLink>
           </nav>
         </div>

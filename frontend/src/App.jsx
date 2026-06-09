@@ -6,6 +6,7 @@ import Roadmaps from './pages/Roadmaps';
 import Jobs from './pages/Jobs';
 import Skills from './pages/Skills';
 import Profile from './pages/Profile';
+import Settings from './pages/Settings';
 import SidebarLayout from './layouts/SidebarLayout';
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/skills" element={<Skills />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
         </Route>
         
         <Route path="*" element={<Navigate to="/" replace />} />

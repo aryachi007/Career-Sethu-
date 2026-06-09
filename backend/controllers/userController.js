@@ -48,8 +48,33 @@ const getUserById = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  try {
+    const { name, college, targetRole, targetCompany, githubUrl, skills } = req.body;
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    if (name !== undefined) user.name = name;
+    if (college !== undefined) user.college = college;
+    if (targetRole !== undefined) user.targetRole = targetRole;
+    if (targetCompany !== undefined) user.targetCompany = targetCompany;
+    if (githubUrl !== undefined) user.githubUrl = githubUrl;
+    if (skills !== undefined) user.skills = skills;
+
+    const updatedUser = await user.save();
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    console.error("Error updating user:", error);
+    res.status(500).json({ error: "Server error updating user" });
+  }
+};
+
 module.exports = {
   createUser,
   getAllUsers,
   getUserById,
+  updateUser,
 };

@@ -8,7 +8,7 @@ const genAI = new GoogleGenerativeAI(apiKey || "MISSING_KEY");
 
 const generateJobMatches = async (user, resume, github, skillGap, roadmapRaw) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // Prompt Size Protections
     const safeJoin = (arr, limit) => (Array.isArray(arr) ? arr.slice(0, limit).join(', ') : 'None');

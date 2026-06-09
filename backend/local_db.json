@@ -157,6 +157,57 @@
       "skills": [],
       "createdAt": "2026-06-09T20:30:44.047Z",
       "updatedAt": "2026-06-09T20:30:44.047Z"
+    },
+    {
+      "_id": "6a289167a34051d9b7d7f4f9",
+      "email": "test_verification_1781043559510@example.com",
+      "name": "Test User",
+      "googleId": "google_1781043559510",
+      "skills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "createdAt": "2026-06-09T22:19:19.636Z",
+      "updatedAt": "2026-06-09T22:19:19.659Z",
+      "college": "Stanford",
+      "targetRole": "Frontend Engineer",
+      "targetCompany": "Google",
+      "githubUrl": "https://github.com/aryachi007"
+    },
+    {
+      "_id": "6a28940ea34051d9b7d7f500",
+      "email": "test_verification_1781044238258@example.com",
+      "name": "Test User",
+      "googleId": "google_1781044238258",
+      "skills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "createdAt": "2026-06-09T22:30:38.309Z",
+      "updatedAt": "2026-06-09T22:30:38.321Z",
+      "college": "Stanford",
+      "targetRole": "Frontend Engineer",
+      "targetCompany": "Google",
+      "githubUrl": "https://github.com/aryachi007"
+    },
+    {
+      "_id": "6a289431f523842bf5d9f52a",
+      "email": "test_verification_1781044273568@example.com",
+      "name": "Test User",
+      "googleId": "google_1781044273568",
+      "skills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "createdAt": "2026-06-09T22:31:13.684Z",
+      "updatedAt": "2026-06-09T22:31:13.698Z",
+      "college": "Stanford",
+      "targetRole": "Frontend Engineer",
+      "targetCompany": "Google",
+      "githubUrl": "https://github.com/aryachi007"
     }
   ],
   "roadmaps": [
@@ -666,6 +717,123 @@
       },
       "createdAt": "2026-06-09T20:47:13.701Z",
       "updatedAt": "2026-06-09T20:47:13.701Z"
+    },
+    {
+      "_id": "6a289169a34051d9b7d7f4fb",
+      "userId": "6a289167a34051d9b7d7f4f9",
+      "roadmap": {
+        "title": "Frontend Engineer Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Frontend Engineer tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: JavaScript, React, CSS. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T22:19:21.615Z",
+      "updatedAt": "2026-06-09T22:19:21.615Z"
+    },
+    {
+      "_id": "6a289410a34051d9b7d7f502",
+      "userId": "6a28940ea34051d9b7d7f500",
+      "roadmap": {
+        "title": "Frontend Engineer Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Frontend Engineer tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: JavaScript, React, CSS. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T22:30:40.075Z",
+      "updatedAt": "2026-06-09T22:30:40.075Z"
+    },
+    {
+      "_id": "6a289437f523842bf5d9f52d",
+      "userId": "6a289431f523842bf5d9f52a",
+      "roadmap": {
+        "title": "Frontend Engineer Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Frontend Engineer tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: JavaScript, React, CSS. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T22:31:19.504Z",
+      "updatedAt": "2026-06-09T22:31:19.504Z"
     }
   ],
   "githubanalyses": [
@@ -830,6 +998,32 @@
       "createdAt": "2026-06-09T18:34:02.079Z",
       "updatedAt": "2026-06-09T18:34:02.079Z",
       "__v": 0
+    },
+    {
+      "_id": "6a289432f523842bf5d9f52b",
+      "userId": "6a289431f523842bf5d9f52a",
+      "githubUsername": "aryachi007",
+      "repoCount": 2,
+      "topLanguages": [
+        "JavaScript",
+        "TypeScript"
+      ],
+      "topRepositories": [
+        "Career-Sethu-",
+        "Canodesk-"
+      ],
+      "estimatedSkillLevel": "Beginner",
+      "strengths": [
+        "Demonstrated familiarity with JavaScript, TypeScript",
+        "Active public contributions"
+      ],
+      "weaknesses": [
+        "Needs deeper architectural patterns",
+        "Could improve automated test coverage",
+        "Requires more public portfolio building"
+      ],
+      "createdAt": "2026-06-09T22:31:14.055Z",
+      "updatedAt": "2026-06-09T22:31:14.055Z"
     }
   ],
   "resumeanalyses": [],
@@ -1261,6 +1455,105 @@
       "skillGapPercentage": 50,
       "createdAt": "2026-06-09T20:31:10.189Z",
       "updatedAt": "2026-06-09T20:31:10.189Z"
+    },
+    {
+      "_id": "6a289169a34051d9b7d7f4fa",
+      "userId": "6a289167a34051d9b7d7f4f9",
+      "targetRole": "Frontend Engineer",
+      "currentSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "React",
+        "CSS",
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "readinessScore": 50,
+      "skillGapPercentage": 50,
+      "createdAt": "2026-06-09T22:19:21.344Z",
+      "updatedAt": "2026-06-09T22:19:21.344Z"
+    },
+    {
+      "_id": "6a28940fa34051d9b7d7f501",
+      "userId": "6a28940ea34051d9b7d7f500",
+      "targetRole": "Frontend Engineer",
+      "currentSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "React",
+        "CSS",
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "readinessScore": 50,
+      "skillGapPercentage": 50,
+      "createdAt": "2026-06-09T22:30:39.895Z",
+      "updatedAt": "2026-06-09T22:30:39.895Z"
+    },
+    {
+      "_id": "6a289433f523842bf5d9f52c",
+      "userId": "6a289431f523842bf5d9f52a",
+      "targetRole": "Frontend Engineer",
+      "currentSkills": [
+        "JavaScript",
+        "React",
+        "CSS",
+        "TypeScript"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "React",
+        "CSS",
+        "TypeScript",
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS",
+        "TypeScript"
+      ],
+      "missingSkills": [
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "readinessScore": 50,
+      "skillGapPercentage": 50,
+      "createdAt": "2026-06-09T22:31:15.290Z",
+      "updatedAt": "2026-06-09T22:31:15.290Z"
     }
   ],
   "jobmatches": [
@@ -1354,6 +1647,282 @@
       "applicationReadiness": "6+ months of experience needed",
       "createdAt": "2026-06-09T21:00:21.991Z",
       "updatedAt": "2026-06-09T21:00:21.991Z"
+    },
+    {
+      "_id": "6a289169a34051d9b7d7f4fc",
+      "userId": "6a289167a34051d9b7d7f4f9",
+      "category": "applyNow",
+      "jobTitle": "Junior Frontend Engineer",
+      "company": "Google (Contract)",
+      "matchScore": 80,
+      "confidenceScore": 85,
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "System Design"
+      ],
+      "recommendation": "Great fit for an entry-level or contract tier based on your verified baseline stack.",
+      "nextAction": "Solidify TypeScript and complete a modular REST API project.",
+      "applicationReadiness": "Ready to apply today",
+      "createdAt": "2026-06-09T22:19:21.751Z",
+      "updatedAt": "2026-06-09T22:19:21.751Z"
+    },
+    {
+      "_id": "6a289169a34051d9b7d7f4fd",
+      "userId": "6a289167a34051d9b7d7f4f9",
+      "category": "applyNow",
+      "jobTitle": "Frontend Developer",
+      "company": "GlobalTech Solutions",
+      "matchScore": 88,
+      "confidenceScore": 90,
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "TypeScript"
+      ],
+      "recommendation": "Strong match for UI engineering roles requiring modern framework experience.",
+      "nextAction": "Convert your React portfolio projects to TypeScript.",
+      "applicationReadiness": "Ready to apply today",
+      "createdAt": "2026-06-09T22:19:21.751Z",
+      "updatedAt": "2026-06-09T22:19:21.751Z"
+    },
+    {
+      "_id": "6a289169a34051d9b7d7f4fe",
+      "userId": "6a289167a34051d9b7d7f4f9",
+      "category": "applyAfterUpskilling",
+      "jobTitle": "Mid-level Frontend Engineer",
+      "company": "InnoStream Systems",
+      "matchScore": 65,
+      "confidenceScore": 80,
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "System Design",
+        "Docker",
+        "Node.js (Advanced)"
+      ],
+      "recommendation": "Excellent growth path once intermediate architecture and microservices skills are learned.",
+      "nextAction": "Complete a course on Docker and design a multi-service message broker.",
+      "applicationReadiness": "1-3 months of upskilling needed",
+      "createdAt": "2026-06-09T22:19:21.751Z",
+      "updatedAt": "2026-06-09T22:19:21.751Z"
+    },
+    {
+      "_id": "6a289169a34051d9b7d7f4ff",
+      "userId": "6a289167a34051d9b7d7f4f9",
+      "category": "longTermGoals",
+      "jobTitle": "Lead Frontend Engineer",
+      "company": "Google",
+      "matchScore": 40,
+      "confidenceScore": 75,
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "System Design",
+        "Cloud Architecture",
+        "Distributed Caching"
+      ],
+      "recommendation": "Target destination objective. Focus on end-to-end design patterns and technical leadership.",
+      "nextAction": "Read designing data-intensive applications and build a load-balanced prototype.",
+      "applicationReadiness": "6+ months of experience needed",
+      "createdAt": "2026-06-09T22:19:21.751Z",
+      "updatedAt": "2026-06-09T22:19:21.751Z"
+    },
+    {
+      "_id": "6a289410a34051d9b7d7f503",
+      "userId": "6a28940ea34051d9b7d7f500",
+      "category": "applyNow",
+      "jobTitle": "Junior Frontend Engineer",
+      "company": "Google (Contract)",
+      "matchScore": 80,
+      "confidenceScore": 85,
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "System Design"
+      ],
+      "recommendation": "Great fit for an entry-level or contract tier based on your verified baseline stack.",
+      "nextAction": "Solidify TypeScript and complete a modular REST API project.",
+      "applicationReadiness": "Ready to apply today",
+      "createdAt": "2026-06-09T22:30:40.218Z",
+      "updatedAt": "2026-06-09T22:30:40.218Z"
+    },
+    {
+      "_id": "6a289410a34051d9b7d7f504",
+      "userId": "6a28940ea34051d9b7d7f500",
+      "category": "applyNow",
+      "jobTitle": "Frontend Developer",
+      "company": "GlobalTech Solutions",
+      "matchScore": 88,
+      "confidenceScore": 90,
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "TypeScript"
+      ],
+      "recommendation": "Strong match for UI engineering roles requiring modern framework experience.",
+      "nextAction": "Convert your React portfolio projects to TypeScript.",
+      "applicationReadiness": "Ready to apply today",
+      "createdAt": "2026-06-09T22:30:40.218Z",
+      "updatedAt": "2026-06-09T22:30:40.218Z"
+    },
+    {
+      "_id": "6a289410a34051d9b7d7f505",
+      "userId": "6a28940ea34051d9b7d7f500",
+      "category": "applyAfterUpskilling",
+      "jobTitle": "Mid-level Frontend Engineer",
+      "company": "InnoStream Systems",
+      "matchScore": 65,
+      "confidenceScore": 80,
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "System Design",
+        "Docker",
+        "Node.js (Advanced)"
+      ],
+      "recommendation": "Excellent growth path once intermediate architecture and microservices skills are learned.",
+      "nextAction": "Complete a course on Docker and design a multi-service message broker.",
+      "applicationReadiness": "1-3 months of upskilling needed",
+      "createdAt": "2026-06-09T22:30:40.218Z",
+      "updatedAt": "2026-06-09T22:30:40.218Z"
+    },
+    {
+      "_id": "6a289410a34051d9b7d7f506",
+      "userId": "6a28940ea34051d9b7d7f500",
+      "category": "longTermGoals",
+      "jobTitle": "Lead Frontend Engineer",
+      "company": "Google",
+      "matchScore": 40,
+      "confidenceScore": 75,
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "System Design",
+        "Cloud Architecture",
+        "Distributed Caching"
+      ],
+      "recommendation": "Target destination objective. Focus on end-to-end design patterns and technical leadership.",
+      "nextAction": "Read designing data-intensive applications and build a load-balanced prototype.",
+      "applicationReadiness": "6+ months of experience needed",
+      "createdAt": "2026-06-09T22:30:40.218Z",
+      "updatedAt": "2026-06-09T22:30:40.218Z"
+    },
+    {
+      "_id": "6a28943bf523842bf5d9f52e",
+      "userId": "6a289431f523842bf5d9f52a",
+      "category": "applyNow",
+      "jobTitle": "Junior Frontend Engineer",
+      "company": "Google (Contract)",
+      "matchScore": 80,
+      "confidenceScore": 85,
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "System Design"
+      ],
+      "recommendation": "Great fit for an entry-level or contract tier based on your verified baseline stack.",
+      "nextAction": "Solidify TypeScript and complete a modular REST API project.",
+      "applicationReadiness": "Ready to apply today",
+      "createdAt": "2026-06-09T22:31:23.480Z",
+      "updatedAt": "2026-06-09T22:31:23.480Z"
+    },
+    {
+      "_id": "6a28943bf523842bf5d9f52f",
+      "userId": "6a289431f523842bf5d9f52a",
+      "category": "applyNow",
+      "jobTitle": "Frontend Developer",
+      "company": "GlobalTech Solutions",
+      "matchScore": 88,
+      "confidenceScore": 90,
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "TypeScript"
+      ],
+      "recommendation": "Strong match for UI engineering roles requiring modern framework experience.",
+      "nextAction": "Convert your React portfolio projects to TypeScript.",
+      "applicationReadiness": "Ready to apply today",
+      "createdAt": "2026-06-09T22:31:23.480Z",
+      "updatedAt": "2026-06-09T22:31:23.480Z"
+    },
+    {
+      "_id": "6a28943bf523842bf5d9f530",
+      "userId": "6a289431f523842bf5d9f52a",
+      "category": "applyAfterUpskilling",
+      "jobTitle": "Mid-level Frontend Engineer",
+      "company": "InnoStream Systems",
+      "matchScore": 65,
+      "confidenceScore": 80,
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "System Design",
+        "Docker",
+        "Node.js (Advanced)"
+      ],
+      "recommendation": "Excellent growth path once intermediate architecture and microservices skills are learned.",
+      "nextAction": "Complete a course on Docker and design a multi-service message broker.",
+      "applicationReadiness": "1-3 months of upskilling needed",
+      "createdAt": "2026-06-09T22:31:23.480Z",
+      "updatedAt": "2026-06-09T22:31:23.480Z"
+    },
+    {
+      "_id": "6a28943bf523842bf5d9f531",
+      "userId": "6a289431f523842bf5d9f52a",
+      "category": "longTermGoals",
+      "jobTitle": "Lead Frontend Engineer",
+      "company": "Google",
+      "matchScore": 40,
+      "confidenceScore": 75,
+      "matchedSkills": [
+        "JavaScript",
+        "React",
+        "CSS"
+      ],
+      "missingSkills": [
+        "System Design",
+        "Cloud Architecture",
+        "Distributed Caching"
+      ],
+      "recommendation": "Target destination objective. Focus on end-to-end design patterns and technical leadership.",
+      "nextAction": "Read designing data-intensive applications and build a load-balanced prototype.",
+      "applicationReadiness": "6+ months of experience needed",
+      "createdAt": "2026-06-09T22:31:23.480Z",
+      "updatedAt": "2026-06-09T22:31:23.480Z"
     }
   ]
 }

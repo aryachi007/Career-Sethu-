@@ -1,7 +1,10 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const apiKey = process.env.GEMINI_API_KEY || ("AQ.Ab8RN6LI" + "zOek_OjCotdnHMKSRG3Y9hSU_HtpYvU6D5Dhnk9Uug");
-const genAI = new GoogleGenerativeAI(apiKey);
+const apiKey = process.env.GEMINI_API_KEY;
+if (!apiKey) {
+  console.error("[githubService] FATAL: GEMINI_API_KEY environment variable is not set.");
+}
+const genAI = new GoogleGenerativeAI(apiKey || "MISSING_KEY");
 
 const analyzeGithubProfile = async (githubUrl) => {
   if (!githubUrl || !githubUrl.includes("github.com/")) {

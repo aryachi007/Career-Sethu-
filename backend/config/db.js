@@ -113,12 +113,12 @@ function setupMockDb() {
 
       if (result) {
         result.save = async function() {
-          const col = getCollection(this.modelName);
+          const col = getCollection(target.modelName);
           const index = col.findIndex(item => String(item._id) === String(result._id));
           if (index !== -1) {
             result.updatedAt = new Date();
             col[index] = { ...col[index], ...result };
-            saveCollection(this.modelName, col);
+            saveCollection(target.modelName, col);
           }
           return result;
         };
@@ -139,12 +139,12 @@ function setupMockDb() {
       
       if (result) {
         result.save = async function() {
-          const col = getCollection(this.modelName);
+          const col = getCollection(target.modelName);
           const index = col.findIndex(item => String(item._id) === String(result._id));
           if (index !== -1) {
             result.updatedAt = new Date();
             col[index] = { ...col[index], ...result };
-            saveCollection(this.modelName, col);
+            saveCollection(target.modelName, col);
           }
           return result;
         };
@@ -181,6 +181,21 @@ function setupMockDb() {
       });
       saveCollection(this.modelName, filtered);
       return { deletedCount: initialLen - filtered.length };
+    };
+
+    // Mock Model.insertMany
+    target.insertMany = async function(docs) {
+      if (!Array.isArray(docs)) docs = [docs];
+      const collection = getCollection(this.modelName);
+      const newDocs = docs.map(doc => ({
+        _id: new mongoose.Types.ObjectId().toString(),
+        ...doc,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }));
+      collection.push(...newDocs);
+      saveCollection(this.modelName, collection);
+      return newDocs;
     };
   };
 

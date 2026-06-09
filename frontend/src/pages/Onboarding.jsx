@@ -7,10 +7,20 @@ import Logo from '../components/common/Logo';
 
 export default function Onboarding() {
   const navigate = useNavigate();
-  const { user, loginWithGoogle, isFirebaseConfigured } = useAuth();
+  const { user, loginWithGoogle, isFirebaseConfigured, updateUserSession } = useAuth();
   
   const [isGenerating, setIsGenerating] = useState(false);
-  const [loadingState, setLoadingState] = useState('');
+  const [currentStage, setCurrentStage] = useState(null);
+  const [completedStages, setCompletedStages] = useState([]);
+  
+  const progressStages = [
+    { id: 'profile', label: 'Creating Profile' },
+    { id: 'github', label: 'Analyzing GitHub' },
+    { id: 'skillGap', label: 'Calculating Skill Gap' },
+    { id: 'roadmap', label: 'Generating Roadmap' },
+    { id: 'jobs', label: 'Finding Job Matches' }
+  ];
+
   const [formData, setFormData] = useState({
     fullName: '',
     college: '',
@@ -20,7 +30,7 @@ export default function Onboarding() {
     githubUrl: ''
   });
 
-  const [skills, setSkills] = useState(['React', 'JavaScript', 'Python']);
+  const [skills, setSkills] = useState([]);
   const [skillInput, setSkillInput] = useState('');
 
   // 1. Redirect if already authenticated and root route is visited
@@ -68,10 +78,11 @@ export default function Onboarding() {
     if (!user) return;
     
     setIsGenerating(true);
-    setLoadingState('Saving profile...');
+    setCompletedStages([]);
     
     try {
       // Step A: Update User Details via PUT
+      setCurrentStage('profile');
       const userPayload = {
         name: formData.fullName,
         college: formData.college,
@@ -87,65 +98,77 @@ export default function Onboarding() {
         body: JSON.stringify(userPayload)
       });
 
-      if (!userResponse.ok) {
-        throw new Error('Profile update failed');
+      if (!userResponse.ok) throw new Error('Profile update failed');
+      const updatedUser = await userResponse.json();
+      if (updateUserSession) {
+        updateUserSession(updatedUser);
       }
+      setCompletedStages(prev => [...prev, 'profile']);
 
       // Step B: Analyze GitHub if URL is provided
+      setCurrentStage('github');
       if (formData.githubUrl && formData.githubUrl.trim() !== '') {
-        setLoadingState('Analyzing GitHub profile...');
         try {
           const githubResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/github/analyze`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ userId: user._id })
           });
-          if (!githubResponse.ok) {
-            console.warn('GitHub analysis failed during onboarding, continuing...');
-          }
+          if (!githubResponse.ok) console.warn('GitHub analysis failed');
         } catch (githubErr) {
           console.warn('Failed to call GitHub analysis:', githubErr);
         }
       }
+      setCompletedStages(prev => [...prev, 'github']);
 
       // Step C: Analyze Skill Gap
-      setLoadingState('Analyzing skill gaps...');
+      setCurrentStage('skillGap');
       try {
         const skillGapResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/skill-gap/analyze`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ userId: user._id })
         });
-        if (!skillGapResponse.ok) {
-          console.warn('Skill gap analysis failed during onboarding, continuing...');
-        }
+        if (!skillGapResponse.ok) console.warn('Skill gap analysis failed');
       } catch (skillGapErr) {
         console.warn('Failed to call Skill Gap analysis:', skillGapErr);
       }
+      setCompletedStages(prev => [...prev, 'skillGap']);
       
       // Step D: Generate Roadmap
-      setLoadingState('Generating AI roadmap...');
-      const roadmapResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/roadmaps/generate`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId: user._id })
-      });
-
-      if (!roadmapResponse.ok) {
-        throw new Error('Roadmap generation failed');
+      setCurrentStage('roadmap');
+      try {
+        const roadmapResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/roadmaps/generate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId: user._id })
+        });
+        if (!roadmapResponse.ok) throw new Error('Roadmap generation failed');
+      } catch (err) {
+        console.warn('Roadmap error:', err);
       }
+      setCompletedStages(prev => [...prev, 'roadmap']);
 
-      await roadmapResponse.json();
-      setLoadingState('Roadmap generated!');
+      // Step E: Generate Job Matches
+      setCurrentStage('jobs');
+      try {
+        const jobsResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/job-matches/generate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userId: user._id })
+        });
+        if (!jobsResponse.ok) console.warn('Job matching failed');
+      } catch (err) {
+        console.warn('Job match error:', err);
+      }
+      setCompletedStages(prev => [...prev, 'jobs']);
       
       // Navigate to dashboard
       navigate('/dashboard', { state: { userId: user._id } });
     } catch (error) {
       console.error("Failed to process onboarding:", error);
       alert(`Error: ${error.message || 'Network error'}. Please check the console.`);
-    } finally {
       setIsGenerating(false);
-      setLoadingState('');
     }
   };
 
@@ -231,51 +254,76 @@ export default function Onboarding() {
         <Logo size="lg" className="justify-center mb-6" showText={true} />
         <FramerGlowCard>
           <div className="flex flex-col gap-6 p-2">
-            <header className="flex flex-col gap-1 items-center text-center">
-              <span className="text-[13px] font-medium text-[#cfc4c5] uppercase tracking-widest mb-2">Step 1 of 2</span>
-              <h1 className="text-3xl md:text-[40px] leading-tight font-bold text-[#e2e2e2] tracking-tight">Complete profile.</h1>
-              <p className="text-[15px] text-[#cfc4c5] mt-1">Let AI build your perfect career roadmap.</p>
-            </header>
-
-            <form className="flex flex-col gap-3 w-full mt-2" onSubmit={handleSubmit}>
-              <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} placeholder="Full Name" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/60 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40 transition-colors backdrop-blur-sm" />
-              <input type="text" name="college" value={formData.college} onChange={handleInputChange} placeholder="College / Degree" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/60 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40 transition-colors backdrop-blur-sm" />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <input type="text" name="gradYear" value={formData.gradYear} onChange={handleInputChange} placeholder="Grad Year" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/60 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40 transition-colors backdrop-blur-sm" />
-                <input type="text" name="targetRole" value={formData.targetRole} onChange={handleInputChange} placeholder="Target Role" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/60 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40 transition-colors backdrop-blur-sm" />
-              </div>
-              <input type="text" name="targetCompany" value={formData.targetCompany} onChange={handleInputChange} placeholder="Target Dream Company" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/60 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40 transition-colors backdrop-blur-sm" />
-              
-              <div className="relative flex items-center">
-                <Link2 className="absolute left-4 w-5 h-5 text-[#cfc4c5]" />
-                <input type="url" name="githubUrl" value={formData.githubUrl} onChange={handleInputChange} placeholder="GitHub Profile URL" className="w-full bg-white/5 border border-white/10 rounded-lg pl-12 pr-4 py-3 text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/60 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40 transition-colors backdrop-blur-sm" />
-              </div>
-
-              <div className="flex flex-col gap-2 mt-2">
-                <label className="text-[13px] font-medium text-[#cfc4c5] uppercase ml-1">Current Skills (Press Enter to add)</label>
-                <div className="w-full min-h-[48px] bg-white/5 border border-white/10 rounded-lg p-2 flex flex-wrap gap-2 items-center focus-within:border-white/40 focus-within:ring-1 focus-within:ring-white/40 transition-colors backdrop-blur-sm">
-                  {skills.map((skill, index) => (
-                    <span key={index} className="inline-flex items-center gap-1 bg-white/10 px-3 py-1.5 rounded-full text-[13px] font-medium text-[#e2e2e2]">
-                      {skill} 
-                      <button type="button" onClick={() => removeSkill(skill)} className="text-[#cfc4c5] hover:text-[#ffb4ab] transition-colors"><X className="w-3.5 h-3.5" /></button>
-                    </span>
-                  ))}
-                  <input type="text" value={skillInput} onChange={(e) => setSkillInput(e.target.value)} onKeyDown={handleAddSkill} placeholder="Add a skill..." className="flex-1 bg-transparent border-none outline-none text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/50 min-w-[120px] p-1" />
+            {isGenerating ? (
+              <div className="py-8 px-4 flex flex-col items-center">
+                <Loader2 className="w-12 h-12 text-blue-500 animate-spin mb-6" />
+                <h2 className="text-xl font-bold text-white mb-6">Building your career intelligence...</h2>
+                <div className="w-full space-y-4">
+                  {progressStages.map((stage) => {
+                    const isCompleted = completedStages.includes(stage.id);
+                    const isActive = currentStage === stage.id;
+                    return (
+                      <div key={stage.id} className="flex items-center gap-4 text-sm font-medium">
+                        <div className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 border transition-all ${
+                          isCompleted ? 'bg-emerald-500 border-emerald-500 text-white' :
+                          isActive ? 'bg-blue-500/20 border-blue-500 text-blue-400 animate-pulse' :
+                          'border-zinc-700 text-zinc-600'
+                        }`}>
+                          {isCompleted ? <Sparkles className="w-3.5 h-3.5" /> : isActive ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <div className="w-1.5 h-1.5 bg-zinc-600 rounded-full" />}
+                        </div>
+                        <span className={isCompleted ? 'text-emerald-400' : isActive ? 'text-blue-400' : 'text-zinc-600'}>
+                          {stage.label}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
+            ) : (
+              <>
+                <header className="flex flex-col gap-1 items-center text-center">
+                  <span className="text-[13px] font-medium text-[#cfc4c5] uppercase tracking-widest mb-2">Step 1 of 2</span>
+                  <h1 className="text-3xl md:text-[40px] leading-tight font-bold text-[#e2e2e2] tracking-tight">Complete profile.</h1>
+                  <p className="text-[15px] text-[#cfc4c5] mt-1">Let AI build your perfect career roadmap.</p>
+                </header>
 
-              <button 
-                type="submit" 
-                disabled={isGenerating}
-                className="mt-4 flex items-center justify-center gap-2 w-full px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 text-[14px] font-semibold text-white hover:opacity-90 transition-all duration-300 shadow-[0_0_20px_rgba(79,70,229,0.3)] disabled:opacity-70 disabled:cursor-not-allowed"
-              >
-                {isGenerating ? (
-                  <><Loader2 className="w-5 h-5 animate-spin" /> {loadingState}</>
-                ) : (
-                  "Generate AI Roadmap"
-                )}
-              </button>
-            </form>
+                <form className="flex flex-col gap-3 w-full mt-2" onSubmit={handleSubmit}>
+                  <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} placeholder="Full Name" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/60 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40 transition-colors backdrop-blur-sm" />
+                  <input type="text" name="college" value={formData.college} onChange={handleInputChange} placeholder="College / Degree" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/60 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40 transition-colors backdrop-blur-sm" />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <input type="text" name="gradYear" value={formData.gradYear} onChange={handleInputChange} placeholder="Grad Year" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/60 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40 transition-colors backdrop-blur-sm" />
+                    <input type="text" name="targetRole" value={formData.targetRole} onChange={handleInputChange} placeholder="Target Role" required className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/60 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40 transition-colors backdrop-blur-sm" />
+                  </div>
+                  <input type="text" name="targetCompany" value={formData.targetCompany} onChange={handleInputChange} placeholder="Target Dream Company" className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/60 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40 transition-colors backdrop-blur-sm" />
+                  
+                  <div className="relative flex items-center">
+                    <Link2 className="absolute left-4 w-5 h-5 text-[#cfc4c5]" />
+                    <input type="url" name="githubUrl" value={formData.githubUrl} onChange={handleInputChange} placeholder="GitHub Profile URL" className="w-full bg-white/5 border border-white/10 rounded-lg pl-12 pr-4 py-3 text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/60 focus:outline-none focus:border-white/40 focus:ring-1 focus:ring-white/40 transition-colors backdrop-blur-sm" />
+                  </div>
+
+                  <div className="flex flex-col gap-2 mt-2">
+                    <label className="text-[13px] font-medium text-[#cfc4c5] uppercase ml-1">Current Skills (Press Enter to add)</label>
+                    <div className="w-full min-h-[48px] bg-white/5 border border-white/10 rounded-lg p-2 flex flex-wrap gap-2 items-center focus-within:border-white/40 focus-within:ring-1 focus-within:ring-white/40 transition-colors backdrop-blur-sm">
+                      {skills.map((skill, index) => (
+                        <span key={index} className="inline-flex items-center gap-1 bg-white/10 px-3 py-1.5 rounded-full text-[13px] font-medium text-[#e2e2e2]">
+                          {skill} 
+                          <button type="button" onClick={() => removeSkill(skill)} className="text-[#cfc4c5] hover:text-[#ffb4ab] transition-colors"><X className="w-3.5 h-3.5" /></button>
+                        </span>
+                      ))}
+                      <input type="text" value={skillInput} onChange={(e) => setSkillInput(e.target.value)} onKeyDown={handleAddSkill} placeholder="Add a skill..." className="flex-1 bg-transparent border-none outline-none text-[15px] text-[#e2e2e2] placeholder:text-[#cfc4c5]/50 min-w-[120px] p-1" />
+                    </div>
+                  </div>
+
+                  <button 
+                    type="submit" 
+                    disabled={isGenerating}
+                    className="mt-4 flex items-center justify-center gap-2 w-full px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-violet-600 text-[14px] font-semibold text-white hover:opacity-90 transition-all duration-300 shadow-[0_0_20px_rgba(79,70,229,0.3)] disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    Generate AI Roadmap
+                  </button>
+                </form>
+              </>
+            )}
           </div>
         </FramerGlowCard>
       </div>

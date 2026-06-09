@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Loader2 } from 'lucide-react';
+import React from 'react';
+import { useOutletContext } from 'react-router-dom';
 
 import ProfileOverview from '../components/dashboard/ProfileOverview';
 import ReadinessScore from '../components/dashboard/ReadinessScore';
@@ -11,68 +10,7 @@ import AiRoadmap from '../components/dashboard/AiRoadmap';
 import JobMatchesCard from '../components/dashboard/JobMatchesCard';
 
 export default function Dashboard() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [dashboardData, setDashboardData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    // 1. Get userId from location state (just signed up) or localStorage (returning user)
-    const storedUserId = localStorage.getItem('careerSethuUserId');
-    const stateUserId = location.state?.userId;
-    const userId = stateUserId || storedUserId;
-
-    if (!userId) {
-      // If no user context, send back to onboarding
-      navigate('/onboarding');
-      return;
-    }
-
-    // 2. Fetch the aggregated dashboard data
-    const fetchDashboard = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/dashboard/${userId}`);
-        if (!response.ok) {
-          throw new Error('Failed to load dashboard data');
-        }
-        const data = await response.json();
-        setDashboardData(data);
-      } catch (err) {
-        console.error('Error fetching dashboard:', err);
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchDashboard();
-  }, [location, navigate]);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-[#000000] text-[#e2e2e2] flex items-center justify-center p-4">
-        <div className="flex flex-col items-center gap-4">
-          <Loader2 className="w-10 h-10 animate-spin text-blue-500" />
-          <p className="text-zinc-400 font-medium">Aggregating Intelligence...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (error || !dashboardData) {
-    return (
-      <div className="min-h-screen bg-[#000000] text-[#e2e2e2] flex items-center justify-center p-4">
-        <div className="text-center">
-          <p className="text-red-400 font-medium mb-4">Error: {error}</p>
-          <button onClick={() => navigate('/onboarding')} className="px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm">
-            Return to Onboarding
-          </button>
-        </div>
-      </div>
-    );
-  }
-
+  const { dashboardData, refreshDashboard } = useOutletContext();
   const { profile, roadmap, skillGap, resumeAnalysis, githubAnalysis } = dashboardData;
 
   return (
@@ -124,7 +62,7 @@ export default function Dashboard() {
 
           {/* Bottom Row: Job Matches (12) */}
           <div className="md:col-span-12 h-[600px]">
-            <JobMatchesCard jobMatches={dashboardData.jobMatches} userId={profile._id} />
+            <JobMatchesCard jobMatches={dashboardData.jobMatches} userId={profile._id} refreshDashboard={refreshDashboard} />
           </div>
           
         </div>

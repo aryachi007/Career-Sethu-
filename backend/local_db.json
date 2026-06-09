@@ -14,10 +14,10 @@
         "css"
       ],
       "email": "aryachi007@gmail.com",
-      "googleId": "mock-aryan",
+      "googleId": "mock-google-id-1781038967278",
       "photoUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
       "createdAt": "2026-06-08T20:48:10.617Z",
-      "updatedAt": "2026-06-08T20:48:10.617Z",
+      "updatedAt": "2026-06-09T21:02:47.328Z",
       "__v": 0
     },
     {
@@ -137,6 +137,26 @@
       ],
       "createdAt": "2026-06-09T18:54:40.145Z",
       "updatedAt": "2026-06-09T18:54:40.145Z"
+    },
+    {
+      "_id": "6a287625d8da3d98ac737f8f",
+      "email": "mock-1781036581398@gmail.com",
+      "name": "Mock Explorer",
+      "googleId": "mock-google-id-1781036581398",
+      "photoUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Mock Explorer",
+      "skills": [],
+      "createdAt": "2026-06-09T20:23:01.626Z",
+      "updatedAt": "2026-06-09T20:23:01.626Z"
+    },
+    {
+      "_id": "6a2877f4d8da3d98ac737f9b",
+      "email": "mock-1781037044044@gmail.com",
+      "name": "Mock Explorer",
+      "googleId": "mock-google-id-1781037044044",
+      "photoUrl": "https://api.dicebear.com/7.x/bottts/svg?seed=Mock Explorer",
+      "skills": [],
+      "createdAt": "2026-06-09T20:30:44.047Z",
+      "updatedAt": "2026-06-09T20:30:44.047Z"
     }
   ],
   "roadmaps": [
@@ -334,6 +354,318 @@
       },
       "createdAt": "2026-06-09T19:06:38.570Z",
       "updatedAt": "2026-06-09T19:06:38.570Z"
+    },
+    {
+      "_id": "6a287679d8da3d98ac737f91",
+      "userId": "6a287625d8da3d98ac737f8f",
+      "roadmap": {
+        "title": "Lead SDE Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Lead SDE tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T20:24:25.432Z",
+      "updatedAt": "2026-06-09T20:24:25.432Z"
+    },
+    {
+      "_id": "6a287792d8da3d98ac737f96",
+      "userId": "6a287625d8da3d98ac737f8f",
+      "roadmap": {
+        "title": "Lead SDE Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Lead SDE tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T20:29:06.985Z",
+      "updatedAt": "2026-06-09T20:29:06.986Z"
+    },
+    {
+      "_id": "6a28780ed8da3d98ac737f9d",
+      "userId": "6a2877f4d8da3d98ac737f9b",
+      "roadmap": {
+        "title": "Lead SDE Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Lead SDE tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T20:31:10.349Z",
+      "updatedAt": "2026-06-09T20:31:10.349Z"
+    },
+    {
+      "_id": "6a28782bd8da3d98ac737fa2",
+      "userId": "6a2877f4d8da3d98ac737f9b",
+      "roadmap": {
+        "title": "Lead SDE Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Lead SDE tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T20:31:39.811Z",
+      "updatedAt": "2026-06-09T20:31:39.811Z"
+    },
+    {
+      "_id": "6a28792fd8da3d98ac737fa7",
+      "userId": "6a2877f4d8da3d98ac737f9b",
+      "roadmap": {
+        "title": "Lead SDE Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Lead SDE tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T20:35:59.282Z",
+      "updatedAt": "2026-06-09T20:35:59.282Z"
+    },
+    {
+      "_id": "6a287b7dd8da3d98ac737fac",
+      "userId": "6a2877f4d8da3d98ac737f9b",
+      "roadmap": {
+        "title": "Lead SDE Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Lead SDE tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T20:45:49.982Z",
+      "updatedAt": "2026-06-09T20:45:49.982Z"
+    },
+    {
+      "_id": "6a287ba7d8da3d98ac737fb1",
+      "userId": "6a2877f4d8da3d98ac737f9b",
+      "roadmap": {
+        "title": "Lead SDE Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Lead SDE tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T20:46:31.819Z",
+      "updatedAt": "2026-06-09T20:46:31.819Z"
+    },
+    {
+      "_id": "6a287bd1d8da3d98ac737fb6",
+      "userId": "6a2877f4d8da3d98ac737f9b",
+      "roadmap": {
+        "title": "Lead SDE Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Lead SDE tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T20:47:13.701Z",
+      "updatedAt": "2026-06-09T20:47:13.701Z"
     }
   ],
   "githubanalyses": [
@@ -889,7 +1221,139 @@
       "skillGapPercentage": 50,
       "createdAt": "2026-06-09T19:03:42.145Z",
       "updatedAt": "2026-06-09T19:03:42.145Z"
+    },
+    {
+      "_id": "6a287678d8da3d98ac737f90",
+      "userId": "6a287625d8da3d98ac737f8f",
+      "currentSkills": [],
+      "requiredSkills": [
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "matchedSkills": [],
+      "missingSkills": [
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "readinessScore": 50,
+      "skillGapPercentage": 50,
+      "createdAt": "2026-06-09T20:24:24.756Z",
+      "updatedAt": "2026-06-09T20:24:24.756Z"
+    },
+    {
+      "_id": "6a28780ed8da3d98ac737f9c",
+      "userId": "6a2877f4d8da3d98ac737f9b",
+      "currentSkills": [],
+      "requiredSkills": [
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "matchedSkills": [],
+      "missingSkills": [
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "readinessScore": 50,
+      "skillGapPercentage": 50,
+      "createdAt": "2026-06-09T20:31:10.189Z",
+      "updatedAt": "2026-06-09T20:31:10.189Z"
     }
   ],
-  "jobmatches": []
+  "jobmatches": [
+    {
+      "_id": "6a287ee5a34051d9b7d7f4f5",
+      "userId": "6a2877f4d8da3d98ac737f9b",
+      "category": "applyNow",
+      "jobTitle": "Junior Software Engineer",
+      "company": "Google (Contract)",
+      "matchScore": 80,
+      "confidenceScore": 85,
+      "matchedSkills": [
+        "React",
+        "JavaScript",
+        "Python"
+      ],
+      "missingSkills": [
+        "System Design"
+      ],
+      "recommendation": "Great fit for an entry-level or contract tier based on your verified baseline stack.",
+      "nextAction": "Solidify TypeScript and complete a modular REST API project.",
+      "applicationReadiness": "Ready to apply today",
+      "createdAt": "2026-06-09T21:00:21.991Z",
+      "updatedAt": "2026-06-09T21:00:21.991Z"
+    },
+    {
+      "_id": "6a287ee5a34051d9b7d7f4f6",
+      "userId": "6a2877f4d8da3d98ac737f9b",
+      "category": "applyNow",
+      "jobTitle": "Frontend Developer",
+      "company": "GlobalTech Solutions",
+      "matchScore": 88,
+      "confidenceScore": 90,
+      "matchedSkills": [
+        "React",
+        "JavaScript"
+      ],
+      "missingSkills": [
+        "TypeScript"
+      ],
+      "recommendation": "Strong match for UI engineering roles requiring modern framework experience.",
+      "nextAction": "Convert your React portfolio projects to TypeScript.",
+      "applicationReadiness": "Ready to apply today",
+      "createdAt": "2026-06-09T21:00:21.991Z",
+      "updatedAt": "2026-06-09T21:00:21.991Z"
+    },
+    {
+      "_id": "6a287ee5a34051d9b7d7f4f7",
+      "userId": "6a2877f4d8da3d98ac737f9b",
+      "category": "applyAfterUpskilling",
+      "jobTitle": "Mid-level Software Engineer",
+      "company": "InnoStream Systems",
+      "matchScore": 65,
+      "confidenceScore": 80,
+      "matchedSkills": [
+        "React",
+        "JavaScript",
+        "Python"
+      ],
+      "missingSkills": [
+        "System Design",
+        "Docker",
+        "Node.js (Advanced)"
+      ],
+      "recommendation": "Excellent growth path once intermediate architecture and microservices skills are learned.",
+      "nextAction": "Complete a course on Docker and design a multi-service message broker.",
+      "applicationReadiness": "1-3 months of upskilling needed",
+      "createdAt": "2026-06-09T21:00:21.991Z",
+      "updatedAt": "2026-06-09T21:00:21.991Z"
+    },
+    {
+      "_id": "6a287ee5a34051d9b7d7f4f8",
+      "userId": "6a2877f4d8da3d98ac737f9b",
+      "category": "longTermGoals",
+      "jobTitle": "Lead Software Engineer",
+      "company": "Google",
+      "matchScore": 40,
+      "confidenceScore": 75,
+      "matchedSkills": [
+        "React",
+        "JavaScript",
+        "Python"
+      ],
+      "missingSkills": [
+        "System Design",
+        "Cloud Architecture",
+        "Distributed Caching"
+      ],
+      "recommendation": "Target destination objective. Focus on end-to-end design patterns and technical leadership.",
+      "nextAction": "Read designing data-intensive applications and build a load-balanced prototype.",
+      "applicationReadiness": "6+ months of experience needed",
+      "createdAt": "2026-06-09T21:00:21.991Z",
+      "updatedAt": "2026-06-09T21:00:21.991Z"
+    }
+  ]
 }

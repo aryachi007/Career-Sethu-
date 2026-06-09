@@ -1,8 +1,11 @@
 import React from 'react';
-import { Map, BookOpen, Presentation } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Map, BookOpen, Presentation, ChevronRight } from 'lucide-react';
 import FramerGlowCard from '../common/FramerGlowCard';
 
 export default function AiRoadmap({ roadmap }) {
+  const navigate = useNavigate();
+
   if (!roadmap) {
     return (
       <FramerGlowCard className="h-full">
@@ -69,6 +72,16 @@ export default function AiRoadmap({ roadmap }) {
               </div>
             </div>
           )}
+        </div>
+        
+        {/* View Full Roadmap Button */}
+        <div className="mt-4 pt-4 border-t border-white/5 flex justify-end">
+          <button 
+            onClick={() => navigate('/roadmaps')}
+            className="flex items-center text-xs font-bold text-white hover:text-blue-400 transition-colors"
+          >
+            View Full Roadmap <ChevronRight className="w-4 h-4 ml-1" />
+          </button>
         </div>
       </div>
     </FramerGlowCard>

@@ -1,46 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { CheckCircle2, Circle, Lock, BookOpen, Terminal, Trophy } from 'lucide-react';
 import FramerGlowCard from '../components/common/FramerGlowCard';
 
 export default function Roadmaps() {
-  const milestones = [
-    {
-      id: 1,
-      phase: 'Phase 1',
-      title: 'System Design Fundamentals',
-      status: 'active',
-      icon: <BookOpen className="w-5 h-5 text-cyan-400" />,
-      tasks: [
-        { name: 'Client-Server Architecture', completed: true },
-        { name: 'Load Balancing & Caching', completed: true },
-        { name: 'Database Sharding (In Progress)', completed: false },
-      ]
-    },
-    {
-      id: 2,
-      phase: 'Phase 2',
-      title: 'Advanced React & Performance',
-      status: 'locked',
-      icon: <Terminal className="w-5 h-5 text-zinc-500" />,
-      tasks: [
-        { name: 'Virtual DOM Deep Dive', completed: false },
-        { name: 'useMemo & useCallback optimization', completed: false },
-        { name: 'Build a custom React renderer', completed: false },
-      ]
-    },
-    {
-      id: 3,
-      phase: 'Phase 3',
-      title: 'Flipkart Mock Interviews',
-      status: 'locked',
-      icon: <Trophy className="w-5 h-5 text-zinc-500" />,
-      tasks: [
-        { name: 'Machine Coding Round (UI)', completed: false },
-        { name: 'Problem Solving (DSA)', completed: false },
-        { name: 'Hiring Manager Fit', completed: false },
-      ]
-    }
-  ];
+  const { dashboardData } = useOutletContext();
+  const roadmap = dashboardData?.roadmap;
+  
+  // Local state to manage checkbox toggles for demo purposes
+  const [completedTasks, setCompletedTasks] = useState({});
+
+  const toggleTask = (taskId) => {
+    setCompletedTasks(prev => ({
+      ...prev,
+      [taskId]: !prev[taskId]
+    }));
+  };
+
+  if (!roadmap) {
+    return (
+      <div className="p-6 md:p-12 max-w-5xl mx-auto w-full font-sans">
+        <FramerGlowCard>
+          <div className="text-center py-20 text-zinc-400">
+            No roadmap data available. Please generate one during onboarding.
+          </div>
+        </FramerGlowCard>
+      </div>
+    );
+  }
+
+  const milestones = roadmap.timeline?.map((item, idx) => ({
+    id: idx + 1,
+    phase: item.phase,
+    title: item.goal,
+    status: idx === 0 ? 'active' : 'locked',
+    icon: idx === 0 ? <BookOpen className="w-5 h-5 text-cyan-400" /> : <Terminal className="w-5 h-5 text-zinc-500" />,
+    tasks: [
+      { id: `${idx}-1`, name: item.goal }
+    ]
+  })) || [];
 
   return (
     <div className="p-6 md:p-12 max-w-5xl mx-auto w-full font-sans">
@@ -52,9 +50,9 @@ export default function Roadmaps() {
             Active Target
           </span>
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">SDE-1 at Flipkart</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">{roadmap.title || 'Your Career Roadmap'}</h1>
         
-        {/* Progress Bar */}
+        {/* Progress Bar (Mocked for demo) */}
         <div className="flex items-center gap-4 max-w-md">
           <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
             <div className="h-full bg-gradient-to-r from-cyan-400 to-violet-500 w-[20%] rounded-full shadow-[0_0_10px_rgba(34,211,238,0.5)]"></div>
@@ -97,20 +95,23 @@ export default function Roadmaps() {
                     </div>
                     <h3 className="text-2xl font-bold text-white tracking-tight">{milestone.title}</h3>
                     
-                    {/* Tasks List (Using button/span to avoid bg-transparent override issues inside the card) */}
+                    {/* Tasks List */}
                     <div className="flex flex-col gap-3 mt-2">
-                      {milestone.tasks.map((task, i) => (
-                        <button key={i} className="flex items-center gap-3 text-left group/task">
-                          {task.completed ? (
-                            <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                          ) : (
-                            <Circle className="w-5 h-5 text-zinc-600 group-hover/task:text-cyan-400 transition-colors shrink-0" />
-                          )}
-                          <span className={`text-[15px] font-medium ${task.completed ? 'text-zinc-500 line-through' : 'text-zinc-300'}`}>
-                            {task.name}
-                          </span>
-                        </button>
-                      ))}
+                      {milestone.tasks.map((task, i) => {
+                        const isCompleted = completedTasks[task.id];
+                        return (
+                          <button key={i} onClick={() => toggleTask(task.id)} className="flex items-center gap-3 text-left group/task">
+                            {isCompleted ? (
+                              <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                            ) : (
+                              <Circle className="w-5 h-5 text-zinc-600 group-hover/task:text-cyan-400 transition-colors shrink-0" />
+                            )}
+                            <span className={`text-[15px] font-medium transition-colors ${isCompleted ? 'text-zinc-500 line-through' : 'text-zinc-300'}`}>
+                              {task.name}
+                            </span>
+                          </button>
+                        );
+                      })}
                     </div>
 
                     {/* Action Button */}

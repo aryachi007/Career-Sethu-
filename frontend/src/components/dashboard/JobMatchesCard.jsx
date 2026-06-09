@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Briefcase, ChevronRight, Loader2, RefreshCw } from 'lucide-react';
 import FramerGlowCard from '../common/FramerGlowCard';
 
-export default function JobMatchesCard({ jobMatches, userId }) {
+export default function JobMatchesCard({ jobMatches, userId, refreshDashboard }) {
   const [activeTab, setActiveTab] = useState('applyNow');
   const [isGenerating, setIsGenerating] = useState(false);
+  const navigate = useNavigate();
 
   const tabs = [
     { id: 'applyNow', label: 'Apply Now' },
@@ -22,11 +24,14 @@ export default function JobMatchesCard({ jobMatches, userId }) {
       });
       if (!res.ok) throw new Error("Failed to generate matches");
       
-      // Reload page to fetch new dashboard data including new matches
-      window.location.reload();
+      // Use reactive state update instead of reload
+      if (refreshDashboard) {
+        await refreshDashboard();
+      }
     } catch (error) {
       console.error(error);
       alert("Error generating job matches");
+    } finally {
       setIsGenerating(false);
     }
   };
@@ -157,7 +162,10 @@ export default function JobMatchesCard({ jobMatches, userId }) {
                   <span className="text-xs font-medium text-blue-300 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">
                     {job.applicationReadiness}
                   </span>
-                  <button className="flex items-center text-xs font-bold text-white hover:text-blue-400 transition-colors">
+                  <button 
+                    onClick={() => navigate('/jobs')}
+                    className="flex items-center text-xs font-bold text-white hover:text-blue-400 transition-colors"
+                  >
                     View Details <ChevronRight className="w-4 h-4 ml-1" />
                   </button>
                 </div>

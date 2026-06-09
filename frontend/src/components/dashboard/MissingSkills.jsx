@@ -1,8 +1,10 @@
 import React from 'react';
-import { AlertTriangle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { AlertTriangle, ChevronRight } from 'lucide-react';
 import FramerGlowCard from '../common/FramerGlowCard';
 
 export default function MissingSkills({ skillGap }) {
+  const navigate = useNavigate();
   const missingSkills = skillGap?.missingSkills;
   const readinessScore = skillGap?.readinessScore;
 
@@ -41,6 +43,16 @@ export default function MissingSkills({ skillGap }) {
               ))}
             </div>
           )}
+        </div>
+
+        {/* View Skills Button */}
+        <div className="mt-4 pt-4 border-t border-white/5 flex justify-end">
+          <button 
+            onClick={() => navigate('/skills')}
+            className="flex items-center text-xs font-bold text-white hover:text-emerald-400 transition-colors"
+          >
+            View Skill Intelligence <ChevronRight className="w-4 h-4 ml-1" />
+          </button>
         </div>
       </div>
     </FramerGlowCard>

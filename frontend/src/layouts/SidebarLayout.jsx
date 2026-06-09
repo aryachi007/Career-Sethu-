@@ -1,11 +1,46 @@
-import React from 'react';
-import { Outlet, NavLink, BrowserRouter, useInRouterContext } from 'react-router-dom';
-import { LayoutDashboard, Map, Briefcase, BrainCircuit, User, Settings, LogOut } from 'lucide-react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { Outlet, NavLink, BrowserRouter, useInRouterContext, useLocation, useNavigate } from 'react-router-dom';
+import { LayoutDashboard, Map, Briefcase, BrainCircuit, User, Settings, LogOut, Loader2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import Logo from '../components/common/Logo';
 
 function SidebarContent() {
   const { user, logout } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [dashboardData, setDashboardData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  const fetchDashboard = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const storedUserId = localStorage.getItem('careerSethuUserId');
+      const stateUserId = location.state?.userId;
+      const userId = stateUserId || storedUserId;
+
+      if (!userId) {
+        navigate('/onboarding');
+        return;
+      }
+
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/dashboard/${userId}`);
+      if (!response.ok) {
+        throw new Error('Failed to load dashboard data');
+      }
+      const data = await response.json();
+      setDashboardData(data);
+    } catch (err) {
+      console.error('Error fetching dashboard:', err);
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [location.state, navigate]);
+
+  useEffect(() => {
+    fetchDashboard();
+  }, [fetchDashboard]);
 
   return (
     <div className="flex min-h-screen bg-[#000000] text-[#e2e2e2] font-sans overflow-hidden">
@@ -137,8 +172,25 @@ function SidebarContent() {
 
       {/* Main Content Viewport */}
       <main className="flex-1 relative h-screen overflow-y-auto overflow-x-hidden">
-         {/* The Outlet acts as a placeholder where Dashboard, Roadmaps, etc. will render */}
-         <Outlet />
+        {isLoading ? (
+          <div className="h-full flex items-center justify-center">
+            <div className="flex flex-col items-center gap-4">
+              <Loader2 className="w-10 h-10 animate-spin text-blue-500" />
+              <p className="text-zinc-400 font-medium">Loading Intelligence...</p>
+            </div>
+          </div>
+        ) : error || !dashboardData ? (
+          <div className="h-full flex items-center justify-center p-4">
+            <div className="text-center">
+              <p className="text-red-400 font-medium mb-4">Error: {error}</p>
+              <button onClick={() => navigate('/onboarding')} className="px-6 py-2 bg-white/10 hover:bg-white/20 rounded-full text-sm">
+                Return to Onboarding
+              </button>
+            </div>
+          </div>
+        ) : (
+          <Outlet context={{ dashboardData, refreshDashboard: fetchDashboard }} />
+        )}
       </main>
 
     </div>

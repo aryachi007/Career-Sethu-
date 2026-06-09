@@ -155,8 +155,12 @@ export function AuthProvider({ children }) {
     }
   };
 
+  const updateUserSession = (updatedUser) => {
+    setUser(updatedUser);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, loginWithGoogle, logout, isFirebaseConfigured }}>
+    <AuthContext.Provider value={{ user, loading, loginWithGoogle, logout, isFirebaseConfigured, updateUserSession }}>
       {children}
 
       {/* Mock Authentication Modal */}

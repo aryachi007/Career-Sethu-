@@ -1,0 +1,143 @@
+{
+  "profile": {
+    "_id": "6a272a8af0d22cee0d33d672",
+    "name": "ARYAN R",
+    "college": "cse",
+    "targetRole": "worker",
+    "targetCompany": "GOOGLE",
+    "githubUrl": "https://github.com/aryachi007",
+    "skills": [
+      "React",
+      "JavaScript",
+      "Python",
+      "css"
+    ],
+    "createdAt": "2026-06-08T20:48:10.617Z",
+    "updatedAt": "2026-06-08T20:48:10.617Z",
+    "__v": 0
+  },
+  "roadmap": {
+    "title": "worker Accelerator Path for GOOGLE",
+    "overview": "A high-fidelity preparation path designed to transition your experience into a worker tier at GOOGLE. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+    "skillsToLearn": [
+      "System Design & Distributed Architectures",
+      "Advanced Data Structures & Algorithms",
+      "TypeScript & Modern Enterprise Patterns",
+      "Containerization & Orchestration (Docker/Kubernetes)",
+      "Automated Telemetry & Cloud Integration"
+    ],
+    "projects": [
+      "Scalable Mock Integration Gateway (designed for GOOGLE scale)",
+      "High-Throughput Distributed Performance Tracker"
+    ],
+    "courses": [
+      "Advanced System Design Boot Camp",
+      "Data Structures and Algorithm Interview Masterclass"
+    ],
+    "timeline": [
+      {
+        "phase": "Months 1-2",
+        "goal": "Deduplicate and scale verified skills: React, JavaScript, Python, css. Master basic distributed principles."
+      },
+      {
+        "phase": "Months 3-4",
+        "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+      },
+      {
+        "phase": "Months 5-6",
+        "goal": "Intensive system architecture mock sessions and target role alignment for GOOGLE."
+      }
+    ]
+  },
+  "skillGap": {
+    "_id": "6a2734f7af071867417f9851",
+    "userId": "6a272a8af0d22cee0d33d672",
+    "targetRole": "worker",
+    "currentSkills": [
+      "React",
+      "JavaScript",
+      "Python",
+      "CSS",
+      "TypeScript"
+    ],
+    "requiredSkills": [
+      "JavaScript",
+      "Python",
+      "React",
+      "HTML",
+      "CSS",
+      "TypeScript",
+      "Git",
+      "Node.js",
+      "SQL Databases",
+      "RESTful APIs",
+      "Data Structures & Algorithms",
+      "Problem Solving",
+      "Agile Methodologies",
+      "Web Development Principles",
+      "Command Line Interface"
+    ],
+    "matchedSkills": [
+      "JavaScript",
+      "Python",
+      "React",
+      "CSS",
+      "TypeScript"
+    ],
+    "missingSkills": [
+      "HTML",
+      "Git",
+      "Node.js",
+      "SQL Databases",
+      "RESTful APIs",
+      "Data Structures & Algorithms",
+      "Problem Solving",
+      "Agile Methodologies",
+      "Web Development Principles",
+      "Command Line Interface"
+    ],
+    "skillGapPercentage": 67,
+    "readinessScore": 33,
+    "createdAt": "2026-06-08T21:32:39.862Z",
+    "updatedAt": "2026-06-08T21:32:39.862Z",
+    "__v": 0
+  },
+  "resumeAnalysis": null,
+  "githubAnalysis": {
+    "_id": "6a2738418c94753a405c1427",
+    "userId": "6a272a8af0d22cee0d33d672",
+    "githubUsername": "aryachi007",
+    "repoCount": 18,
+    "topLanguages": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "HTML",
+      "C++"
+    ],
+    "topRepositories": [
+      "react-dashboard",
+      "python-automation",
+      "data-structures-algorithms"
+    ],
+    "estimatedSkillLevel": "Intermediate",
+    "strengths": [
+      "JavaScript/TypeScript development",
+      "Python for automation/data tasks",
+      "Fundamental programming concepts (data structures, algorithms)"
+    ],
+    "weaknesses": [
+      "Limited scope of projects presented",
+      "Potential for deeper exploration in C++"
+    ],
+    "createdAt": "2026-06-08T21:46:41.565Z",
+    "updatedAt": "2026-06-08T21:46:41.565Z",
+    "__v": 0
+  },
+  "jobMatches": {
+    "applyNow": [],
+    "applyAfterUpskilling": [],
+    "longTermGoals": []
+  },
+  "lastUpdated": "2026-06-09T18:34:04.828Z"
+}

@@ -1,20 +1,38 @@
 import React from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { BrainCircuit, CheckCircle2, TrendingUp, PlayCircle, ExternalLink, Code2 } from 'lucide-react';
 import FramerGlowCard from '../components/common/FramerGlowCard';
 
 export default function Skills() {
-  const currentSkills = [
-    { name: 'React.js', level: 90 },
-    { name: 'JavaScript (ES6+)', level: 85 },
-    { name: 'Tailwind CSS', level: 95 },
-    { name: 'Node.js', level: 65 },
-  ];
+  const { dashboardData } = useOutletContext();
+  const { profile, skillGap } = dashboardData || {};
 
-  const courses = [
-    { id: 1, title: 'Grokking the System Design Interview', platform: 'Educative.io', type: 'Interactive Course', time: '12 hours' },
-    { id: 2, title: 'AWS Certified Developer Associate', platform: 'FreeCodeCamp', type: 'Video Series', time: '10 hours' },
-    { id: 3, title: 'Advanced Microservices in Node', platform: 'Udemy', type: 'Video Course', time: '8 hours' },
-  ];
+  const currentSkills = profile?.skills?.map(skill => ({
+    name: skill,
+    level: Math.floor(Math.random() * 40) + 60 // Mocking mastery level between 60-100% since backend doesn't provide it
+  })) || [];
+
+  const missingSkills = skillGap?.missingSkills || [];
+
+  const courses = missingSkills.slice(0, 4).map((skill, index) => ({
+    id: index,
+    title: `Mastering ${skill}`,
+    platform: 'Recommended',
+    type: 'Interactive Course',
+    time: 'Self-paced'
+  }));
+
+  if (!dashboardData) {
+    return (
+      <div className="p-6 md:p-10 max-w-7xl mx-auto w-full font-sans">
+        <FramerGlowCard>
+          <div className="text-center py-20 text-zinc-400">
+            No skill data available. Please generate one during onboarding.
+          </div>
+        </FramerGlowCard>
+      </div>
+    );
+  }
 
   return (
     <div className="p-6 md:p-10 max-w-7xl mx-auto w-full font-sans">
@@ -26,7 +44,9 @@ export default function Skills() {
           <span className="text-[13px] font-bold tracking-widest uppercase text-emerald-400">Skill Intelligence</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">Level up your stack.</h1>
-        <p className="text-lg text-zinc-400 max-w-2xl">Your AI analysis shows you need to master System Design and Cloud Architecture to comfortably crack the SDE-1 role at Flipkart.</p>
+        <p className="text-lg text-zinc-400 max-w-2xl">
+          Based on your target of {profile?.targetRole || 'your dream role'} at {profile?.targetCompany || 'your target company'}, here are the critical skills you need to develop.
+        </p>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -39,7 +59,7 @@ export default function Skills() {
                 <Code2 className="w-5 h-5 text-zinc-400" /> Current Arsenal
               </h3>
               <div className="space-y-5">
-                {currentSkills.map((skill, i) => (
+                {currentSkills.length > 0 ? currentSkills.map((skill, i) => (
                   <div key={i}>
                     <div className="flex justify-between text-sm mb-2">
                       <span className="text-zinc-300 font-medium">{skill.name}</span>
@@ -52,7 +72,9 @@ export default function Skills() {
                       ></div>
                     </div>
                   </div>
-                ))}
+                )) : (
+                  <p className="text-sm text-zinc-500">No skills added to your profile.</p>
+                )}
               </div>
             </div>
           </FramerGlowCard>
@@ -63,18 +85,14 @@ export default function Skills() {
                 <TrendingUp className="w-5 h-5 text-emerald-400" /> Priority Targets
               </h3>
               <ul className="space-y-3">
-                <li className="flex items-center gap-3 text-sm text-zinc-300 bg-white/5 p-3 rounded-lg border border-white/5">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                  System Design Patterns
-                </li>
-                <li className="flex items-center gap-3 text-sm text-zinc-300 bg-white/5 p-3 rounded-lg border border-white/5">
-                  <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                  AWS Basics (EC2, S3)
-                </li>
-                <li className="flex items-center gap-3 text-sm text-zinc-300 bg-white/5 p-3 rounded-lg border border-white/5">
-                  <div className="w-2 h-2 rounded-full bg-amber-400"></div>
-                  Advanced Caching
-                </li>
+                {missingSkills.length > 0 ? missingSkills.map((skill, index) => (
+                  <li key={index} className="flex items-center gap-3 text-sm text-zinc-300 bg-white/5 p-3 rounded-lg border border-white/5">
+                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                    {skill}
+                  </li>
+                )) : (
+                  <p className="text-sm text-zinc-500">No missing skills found. You're fully ready!</p>
+                )}
               </ul>
             </div>
           </FramerGlowCard>

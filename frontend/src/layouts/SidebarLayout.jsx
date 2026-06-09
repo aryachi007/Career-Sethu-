@@ -1,9 +1,12 @@
 import React from 'react';
 import { Outlet, NavLink, BrowserRouter, useInRouterContext } from 'react-router-dom';
-import { LayoutDashboard, Map, Briefcase, BrainCircuit, User, Settings } from 'lucide-react';
+import { LayoutDashboard, Map, Briefcase, BrainCircuit, User, Settings, LogOut } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import Logo from '../components/common/Logo';
 
 function SidebarContent() {
+  const { user, logout } = useAuth();
+
   return (
     <div className="flex min-h-screen bg-[#000000] text-[#e2e2e2] font-sans overflow-hidden">
       
@@ -96,7 +99,7 @@ function SidebarContent() {
         </div>
         
         {/* User Profile Snippet at Bottom */}
-        <div className="mt-auto p-6 border-t border-white/5">
+        <div className="mt-auto p-6 border-t border-white/5 flex flex-col gap-3">
           <NavLink 
             to="/profile"
             className={({ isActive }) => 
@@ -105,14 +108,30 @@ function SidebarContent() {
               }`
             }
           >
-            <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-300 font-bold border border-white/10 shrink-0">
-              S
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-white">Sethu User</p>
-              <p className="text-xs text-zinc-500">Free Plan</p>
+            {user?.photoUrl ? (
+              <img 
+                src={user.photoUrl} 
+                alt={user.name} 
+                className="w-10 h-10 rounded-full border border-white/10 shrink-0 object-cover"
+                onError={(e) => { e.target.onerror = null; e.target.src = `https://api.dicebear.com/7.x/initials/svg?seed=${user.name}`; }}
+              />
+            ) : (
+              <div className="w-10 h-10 rounded-full bg-cyan-900/40 border border-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold shrink-0">
+                {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
+              </div>
+            )}
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold text-white truncate">{user?.name || 'SaaS User'}</p>
+              <p className="text-xs text-zinc-500 truncate">{user?.email || 'Free Plan'}</p>
             </div>
           </NavLink>
+
+          <button
+            onClick={logout}
+            className="flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 font-medium text-red-400 hover:text-red-300 hover:bg-red-500/10 text-xs w-full justify-center border border-red-500/10"
+          >
+            <LogOut className="w-4 h-4" /> Log Out
+          </button>
         </div>
       </aside>
 

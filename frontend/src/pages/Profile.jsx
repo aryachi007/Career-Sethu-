@@ -173,7 +173,16 @@ export default function Profile() {
             {/* Holographic Avatar Ring */}
             <div className="w-28 h-28 rounded-full bg-gradient-to-tr from-cyan-400 via-violet-500 to-amber-400 p-[3px] mb-5 shadow-[0_0_30px_rgba(34,211,238,0.2)] relative">
               <div className="w-full h-full bg-zinc-950 rounded-full flex items-center justify-center border border-black overflow-hidden">
-                <span className="text-3xl font-extrabold text-zinc-300">{user.name ? user.name.charAt(0).toUpperCase() : 'S'}</span>
+                {user.photoUrl ? (
+                  <img 
+                    src={user.photoUrl} 
+                    alt={user.name} 
+                    className="w-full h-full rounded-full object-cover"
+                    onError={(e) => { e.target.onerror = null; e.target.src = `https://api.dicebear.com/7.x/initials/svg?seed=${user.name}`; }}
+                  />
+                ) : (
+                  <span className="text-3xl font-extrabold text-zinc-300">{user.name ? user.name.charAt(0).toUpperCase() : 'S'}</span>
+                )}
               </div>
               <div className="absolute -bottom-1 -right-1 bg-cyan-400 text-black p-1.5 rounded-full border border-zinc-950 shadow-lg">
                 <Sparkles className="w-3.5 h-3.5" />

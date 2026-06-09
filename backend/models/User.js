@@ -8,15 +8,12 @@ const userSchema = new mongoose.Schema(
     },
     college: {
       type: String,
-      required: true,
     },
     targetRole: {
       type: String,
-      required: true,
     },
     targetCompany: {
       type: String,
-      required: true,
     },
     githubUrl: {
       type: String,
@@ -24,6 +21,17 @@ const userSchema = new mongoose.Schema(
     skills: {
       type: [String],
       default: [],
+    },
+    email: {
+      type: String,
+      unique: true,
+      sparse: true,
+    },
+    googleId: {
+      type: String,
+    },
+    photoUrl: {
+      type: String,
     },
   },
   {

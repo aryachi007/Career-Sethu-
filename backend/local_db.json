@@ -13,6 +13,9 @@
         "Python",
         "css"
       ],
+      "email": "aryachi007@gmail.com",
+      "googleId": "mock-aryan",
+      "photoUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
       "createdAt": "2026-06-08T20:48:10.617Z",
       "updatedAt": "2026-06-08T20:48:10.617Z",
       "__v": 0
@@ -114,8 +117,26 @@
         "Python",
         "CSS"
       ],
+      "email": "tejas@ibm.com",
+      "googleId": "mock-tejas",
+      "photoUrl": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200&auto=format&fit=crop",
       "createdAt": "2026-06-09T18:38:29.882Z",
       "updatedAt": "2026-06-09T18:38:29.882Z"
+    },
+    {
+      "_id": "6a286170e6a1664b784b96f6",
+      "name": "Tester User",
+      "college": "Test College",
+      "targetRole": "Software Engineer",
+      "targetCompany": "Google",
+      "githubUrl": "https://github.com/aryachi007",
+      "skills": [
+        "React",
+        "JavaScript",
+        "Python"
+      ],
+      "createdAt": "2026-06-09T18:54:40.145Z",
+      "updatedAt": "2026-06-09T18:54:40.145Z"
     }
   ],
   "roadmaps": [
@@ -235,6 +256,84 @@
       },
       "createdAt": "2026-06-09T18:38:31.825Z",
       "updatedAt": "2026-06-09T18:38:31.825Z"
+    },
+    {
+      "_id": "6a286174e6a1664b784b96f8",
+      "userId": "6a286170e6a1664b784b96f6",
+      "roadmap": {
+        "title": "Software Engineer Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Software Engineer tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T18:54:44.136Z",
+      "updatedAt": "2026-06-09T18:54:44.136Z"
+    },
+    {
+      "_id": "6a28643e03d88efedc67b324",
+      "userId": "6a28635803d88efedc67b322",
+      "roadmap": {
+        "title": "Lead SDE Accelerator Path for Google",
+        "overview": "A high-fidelity preparation path designed to transition your experience into a Lead SDE tier at Google. Optimized to focus on key engineering disciplines, architecture paradigms, and targeted domain capabilities.",
+        "skillsToLearn": [
+          "System Design & Distributed Architectures",
+          "Advanced Data Structures & Algorithms",
+          "TypeScript & Modern Enterprise Patterns",
+          "Containerization & Orchestration (Docker/Kubernetes)",
+          "Automated Telemetry & Cloud Integration"
+        ],
+        "projects": [
+          "Scalable Mock Integration Gateway (designed for Google scale)",
+          "High-Throughput Distributed Performance Tracker"
+        ],
+        "courses": [
+          "Advanced System Design Boot Camp",
+          "Data Structures and Algorithm Interview Masterclass"
+        ],
+        "timeline": [
+          {
+            "phase": "Months 1-2",
+            "goal": "Deduplicate and scale verified skills: React, JavaScript, Python. Master basic distributed principles."
+          },
+          {
+            "phase": "Months 3-4",
+            "goal": "Develop advanced full stack projects incorporating robust caching layers and clean API design."
+          },
+          {
+            "phase": "Months 5-6",
+            "goal": "Intensive system architecture mock sessions and target role alignment for Google."
+          }
+        ]
+      },
+      "createdAt": "2026-06-09T19:06:38.570Z",
+      "updatedAt": "2026-06-09T19:06:38.570Z"
     }
   ],
   "githubanalyses": [
@@ -738,6 +837,58 @@
       "skillGapPercentage": 50,
       "createdAt": "2026-06-09T18:38:31.647Z",
       "updatedAt": "2026-06-09T18:38:31.647Z"
+    },
+    {
+      "_id": "6a286173e6a1664b784b96f7",
+      "userId": "6a286170e6a1664b784b96f6",
+      "targetRole": "Software Engineer",
+      "currentSkills": [
+        "React",
+        "JavaScript",
+        "Python"
+      ],
+      "requiredSkills": [
+        "React",
+        "JavaScript",
+        "Python",
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "matchedSkills": [
+        "React",
+        "JavaScript",
+        "Python"
+      ],
+      "missingSkills": [
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "readinessScore": 50,
+      "skillGapPercentage": 50,
+      "createdAt": "2026-06-09T18:54:43.947Z",
+      "updatedAt": "2026-06-09T18:54:43.947Z"
+    },
+    {
+      "_id": "6a28638e03d88efedc67b323",
+      "userId": "6a28635803d88efedc67b322",
+      "currentSkills": [],
+      "requiredSkills": [
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "matchedSkills": [],
+      "missingSkills": [
+        "Data Structures & Algorithms",
+        "TypeScript",
+        "System Design"
+      ],
+      "readinessScore": 50,
+      "skillGapPercentage": 50,
+      "createdAt": "2026-06-09T19:03:42.145Z",
+      "updatedAt": "2026-06-09T19:03:42.145Z"
     }
   ],
   "jobmatches": []

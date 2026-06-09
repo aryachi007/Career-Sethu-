@@ -29,8 +29,10 @@ const getDashboardData = async (req, res) => {
       JobMatch.find({ userId }).sort({ matchScore: -1 })
     ]);
 
+    const isMockDb = mongoose.connection.readyState !== 1;
+
     let finalGithub = githubAnalysis;
-    const isFallbackGithub = finalGithub && (
+    const isFallbackGithub = !isMockDb && finalGithub && (
       finalGithub.estimatedSkillLevel === "Unknown" ||
       (finalGithub.weaknesses && finalGithub.weaknesses.includes("Not enough data to analyze")) ||
       finalGithub.repoCount === 18 ||
@@ -59,7 +61,7 @@ const getDashboardData = async (req, res) => {
     }
 
     let finalSkillGap = skillGap;
-    const isFallbackSkillGap = finalSkillGap && 
+    const isFallbackSkillGap = !isMockDb && finalSkillGap && 
       finalSkillGap.readinessScore === 50 && 
       finalSkillGap.skillGapPercentage === 50 && 
       finalSkillGap.missingSkills && 

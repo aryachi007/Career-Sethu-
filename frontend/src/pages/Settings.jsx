@@ -15,6 +15,7 @@ import {
   Camera,
   Laptop
 } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import FramerGlowCard from '../components/common/FramerGlowCard';
 
 const Github = ({ className }) => (
@@ -34,6 +35,7 @@ const Github = ({ className }) => (
 
 export default function Settings() {
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
   
   // Data States
   const [profile, setProfile] = useState({
@@ -68,10 +70,14 @@ export default function Settings() {
 
   // Fetch initial data
   useEffect(() => {
-    const userId = localStorage.getItem('careerSethuUserId');
+    const userId = localStorage.getItem('careerSethuUserId') || user?._id;
     if (!userId) {
       navigate('/onboarding');
       return;
+    }
+
+    if (user?.email) {
+      setEmail(user.email);
     }
 
     fetch(`${import.meta.env.VITE_API_URL}/api/dashboard/${userId}`)
@@ -82,7 +88,7 @@ export default function Settings() {
       .then(data => {
         if (data && data.profile) {
           setProfile({
-            name: data.profile.name || '',
+            name: data.profile.name || user?.name || '',
             college: data.profile.college || '',
             targetRole: data.profile.targetRole || '',
             targetCompany: data.profile.targetCompany || '',
@@ -90,6 +96,9 @@ export default function Settings() {
             skills: data.profile.skills || []
           });
           setHasResume(!!data.resumeAnalysis);
+          if (data.profile.email) {
+            setEmail(data.profile.email);
+          }
           if (data.profile.githubUrl) {
             setAccountStatus('Verified Member');
           }
@@ -101,7 +110,7 @@ export default function Settings() {
       .finally(() => {
         setLoading(false);
       });
-  }, [navigate]);
+  }, [navigate, user]);
 
   // Form Handlers
   const handleInputChange = (e) => {
@@ -134,7 +143,7 @@ export default function Settings() {
     setSaving(true);
     setSaveSuccess(false);
     
-    const userId = localStorage.getItem('careerSethuUserId');
+    const userId = localStorage.getItem('careerSethuUserId') || user?._id;
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/${userId}`, {
         method: 'PUT',
@@ -155,20 +164,19 @@ export default function Settings() {
   };
 
   // Logout Action
-  const handleLogoutConfirm = () => {
-    localStorage.removeItem('careerSethuUserId');
+  const handleLogoutConfirm = async () => {
     setActiveModal(null);
+    await logout();
     navigate('/');
   };
 
   // Delete Account Action
   const handleDeleteConfirm = async () => {
     setIsDeleting(true);
-    const userId = localStorage.getItem('careerSethuUserId');
+    const userId = localStorage.getItem('careerSethuUserId') || user?._id;
     try {
-      // Clean up local storage
-      localStorage.removeItem('careerSethuUserId');
-      // Simulated DB delete (can be expanded to call actual delete endpoint if required)
+      await logout();
+      // Simulated DB delete
       setTimeout(() => {
         setIsDeleting(false);
         setActiveModal(null);
@@ -234,7 +242,16 @@ export default function Settings() {
                 {/* Holographic Ring */}
                 <div className="w-28 h-28 rounded-full bg-gradient-to-tr from-cyan-400 via-violet-500 to-amber-400 p-[3px] shadow-[0_0_25px_rgba(34,211,238,0.25)] relative">
                   <div className="w-full h-full bg-zinc-950 rounded-full flex items-center justify-center border border-black overflow-hidden">
-                    <span className="text-3xl font-extrabold text-zinc-300 group-hover:scale-105 transition-transform duration-500">{userInitial}</span>
+                    {user?.photoUrl ? (
+                      <img 
+                        src={user.photoUrl} 
+                        alt={profile.name} 
+                        className="w-full h-full rounded-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        onError={(e) => { e.target.onerror = null; e.target.src = `https://api.dicebear.com/7.x/initials/svg?seed=${profile.name}`; }}
+                      />
+                    ) : (
+                      <span className="text-3xl font-extrabold text-zinc-300 group-hover:scale-105 transition-transform duration-500">{userInitial}</span>
+                    )}
                   </div>
                 </div>
                 {/* Camera Overlay Icon */}

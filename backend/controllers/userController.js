@@ -72,9 +72,50 @@ const updateUser = async (req, res) => {
   }
 };
 
+const loginUser = async (req, res) => {
+  try {
+    const { email, name, googleId, photoUrl } = req.body;
+    
+    if (!email) {
+      return res.status(400).json({ error: "Email is required for authentication" });
+    }
+
+    let user = await User.findOne({ email });
+
+    if (user) {
+      let modified = false;
+      if (googleId && user.googleId !== googleId) {
+        user.googleId = googleId;
+        modified = true;
+      }
+      if (photoUrl && user.photoUrl !== photoUrl) {
+        user.photoUrl = photoUrl;
+        modified = true;
+      }
+      if (modified) {
+        user = await user.save();
+      }
+      return res.status(200).json(user);
+    } else {
+      const newUser = await User.create({
+        email,
+        name,
+        googleId,
+        photoUrl,
+        skills: []
+      });
+      return res.status(201).json(newUser);
+    }
+  } catch (error) {
+    console.error("Error logging in user:", error);
+    res.status(500).json({ error: "Server error during user login" });
+  }
+};
+
 module.exports = {
   createUser,
   getAllUsers,
   getUserById,
   updateUser,
+  loginUser,
 };

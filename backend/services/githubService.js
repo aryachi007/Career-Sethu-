@@ -1,11 +1,3 @@
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-
-const apiKey = process.env.GEMINI_API_KEY;
-if (!apiKey) {
-  console.error("[githubService] FATAL: GEMINI_API_KEY environment variable is not set.");
-}
-const genAI = new GoogleGenerativeAI(apiKey || "MISSING_KEY");
-
 const analyzeGithubProfile = async (githubUrl) => {
   if (!githubUrl || !githubUrl.includes("github.com/")) {
     throw new Error("Invalid GitHub URL");
@@ -59,35 +51,34 @@ const analyzeGithubProfile = async (githubUrl) => {
     .slice(0, 3)
     .map(r => r.name);
 
-  // Use Gemini to analyze skill level, strengths, weaknesses
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
+  // Deterministic Analysis Logic
+  let estimatedSkillLevel = "Beginner";
+  if (repoCount > 30) {
+    estimatedSkillLevel = "Advanced";
+  } else if (repoCount > 10) {
+    estimatedSkillLevel = "Intermediate";
+  }
 
-  const prompt = `
-    Analyze this developer's GitHub statistics:
-    - Username: ${username}
-    - Total Public Repos: ${repoCount}
-    - Top Languages Used: ${topLanguages.join(", ")}
-    - Most Starred Original Repositories: ${topRepositories.join(", ")}
+  const strengths = [];
+  if (topLanguages.length > 0) {
+    strengths.push(`Demonstrated familiarity with ${topLanguages.join(', ')}`);
+  } else {
+    strengths.push("Consistent code organization");
+  }
+  
+  if (repoCount > 15) {
+    strengths.push("Highly active public code contributions");
+  } else {
+    strengths.push("Active public contributions");
+  }
 
-    Based ONLY on this data, return a JSON object with:
-    {
-      "estimatedSkillLevel": "Beginner | Intermediate | Advanced | Expert",
-      "strengths": ["Strength 1", "Strength 2"],
-      "weaknesses": ["Area for improvement 1", "Area for improvement 2"]
-    }
-    No markdown, no backticks, just raw JSON.
-  `;
+  const weaknesses = [
+    "Needs deeper architectural patterns",
+    "Could improve automated test coverage"
+  ];
 
-  let analysis;
-  try {
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    let text = response.text();
-    text = text.replace(/```json/g, "").replace(/```/g, "").trim();
-    analysis = JSON.parse(text);
-  } catch (error) {
-    console.error("Gemini failed to analyze GitHub stats:", error);
-    throw new Error(`Gemini analysis failed: ${error.message}`);
+  if (repoCount < 5) {
+    weaknesses.push("Requires more public portfolio building");
   }
 
   return {
@@ -95,9 +86,9 @@ const analyzeGithubProfile = async (githubUrl) => {
     repoCount,
     topLanguages,
     topRepositories,
-    estimatedSkillLevel: analysis.estimatedSkillLevel || "Unknown",
-    strengths: analysis.strengths || [],
-    weaknesses: analysis.weaknesses || []
+    estimatedSkillLevel,
+    strengths,
+    weaknesses
   };
 };
 
